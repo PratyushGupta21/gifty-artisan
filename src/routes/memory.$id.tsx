@@ -71,7 +71,7 @@ function MemoryPage() {
       const { data: photos } = await supabase
         .from("memory_photos")
         .select("photo_url")
-        .eq("memory_id", memory.order_id ?? memory.id);
+        .eq("memory_id", memory.id);
       return { memory, photos: photos ?? [] };
     },
   });

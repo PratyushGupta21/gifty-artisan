@@ -109,13 +109,13 @@ function BuildPage() {
           letter_text: state.cardMessage || state.insideJoke,
           spotify_url: state.spotifyUrl,
         })
-        .select("uuid_slug")
+        .select("id, uuid_slug")
         .single();
       if (memoryError) throw memoryError;
 
       if (state.photos.length) {
         await supabase.from("memory_photos").insert(
-          state.photos.map((photo_url) => ({ memory_id: order.id, photo_url })),
+          state.photos.map((photo_url) => ({ memory_id: memory.id, photo_url })),
         );
       }
 
