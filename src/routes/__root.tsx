@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { BuilderProvider } from "@/lib/builder-store";
+import { BrandLogo } from "@/components/craft/BrandLogo";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -123,8 +124,8 @@ function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link to="/" className="font-[family-name:var(--font-display)] text-lg font-semibold">
-          The Little Box
+        <Link to="/" aria-label="The Little Box Home">
+          <BrandLogo />
         </Link>
         <div className="flex items-center gap-1 text-sm">
           <Link
