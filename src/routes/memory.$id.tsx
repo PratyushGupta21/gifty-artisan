@@ -36,21 +36,42 @@ function spotifyEmbed(url: string) {
 
 function Typewriter({ text }: { text: string }) {
   const [shown, setShown] = useState("");
+  const [done, setDone] = useState(false);
   useEffect(() => {
     setShown("");
+    setDone(false);
     let i = 0;
     const id = setInterval(() => {
       i += 1;
       setShown(text.slice(0, i));
-      if (i >= text.length) clearInterval(id);
+      if (i >= text.length) {
+        clearInterval(id);
+        setDone(true);
+      }
     }, 28);
     return () => clearInterval(id);
   }, [text]);
   return (
     <p className="whitespace-pre-wrap font-[family-name:var(--font-display)] text-lg leading-relaxed">
       {shown}
-      <span className="animate-pulse">|</span>
+      {!done && <span className="animate-pulse">|</span>}
     </p>
+  );
+}
+
+/** Skeleton placeholder shown while the memory data loads. */
+function MemorySkeleton() {
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="flex flex-col items-center gap-6">
+        {/* Envelope skeleton */}
+        <div className="paper-card flex flex-col items-center gap-4 px-10 py-14 animate-pulse">
+          <div className="size-10 rounded-full bg-muted" />
+          <div className="h-7 w-48 rounded-lg bg-muted" />
+          <div className="h-4 w-36 rounded bg-muted" />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -77,7 +98,7 @@ function MemoryPage() {
   });
 
   if (isLoading) {
-    return <p className="p-16 text-center text-muted-foreground">Unwrapping…</p>;
+    return <MemorySkeleton />;
   }
   if (error || !data) {
     return (

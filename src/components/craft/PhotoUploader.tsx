@@ -4,6 +4,11 @@ import { toast } from "sonner";
 import { supabase, MEMORY_BUCKET } from "@/lib/supabase";
 import { cn } from "@/lib/utils";
 
+/** 10 MB — prevents accidental uploads of raw camera files. */
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/heic"];
+
 export function PhotoUploader({
   photos,
   onChange,
@@ -20,6 +25,22 @@ export function PhotoUploader({
     setBusy(true);
     const uploaded: string[] = [];
     for (const file of Array.from(files)) {
+      // --- Guard: file size ---
+      if (file.size > MAX_FILE_SIZE) {
+        toast.error(`${file.name} is too large`, {
+          description: `Max file size is ${MAX_FILE_SIZE / 1024 / 1024} MB.`,
+        });
+        continue;
+      }
+
+      // --- Guard: MIME type ---
+      if (file.type && !ALLOWED_TYPES.includes(file.type)) {
+        toast.error(`${file.name} isn't a supported image format`, {
+          description: "Upload JPEG, PNG, WebP, GIF, or HEIC files.",
+        });
+        continue;
+      }
+
       const ext = file.name.split(".").pop() ?? "jpg";
       const path = `${crypto.randomUUID()}.${ext}`;
       const { error } = await supabase.storage.from(MEMORY_BUCKET).upload(path, file, {

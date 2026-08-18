@@ -114,9 +114,14 @@ function BuildPage() {
       if (memoryError) throw memoryError;
 
       if (state.photos.length) {
-        await supabase.from("memory_photos").insert(
+        const { error: photoError } = await supabase.from("memory_photos").insert(
           state.photos.map((photo_url) => ({ memory_id: memory.id, photo_url })),
         );
+        if (photoError) {
+          toast.warning("Order saved but photos couldn't be linked", {
+            description: photoError.message,
+          });
+        }
       }
 
       toast.success("Order placed — payment link is on its way on WhatsApp.");
