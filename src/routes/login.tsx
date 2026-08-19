@@ -131,7 +131,7 @@ export default function LoginPage() {
 
         {/* Header Branding */}
         <div className="relative z-10">
-          <BrandLogo textColor="text-[#FAF7F2]" />
+          <BrandLogo />
         </div>
 
         {/* Content Body */}

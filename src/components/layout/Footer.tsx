@@ -9,7 +9,7 @@ export const Footer = () => {
           
           {/* Brand Info Column */}
           <div className="space-y-4">
-            <BrandLogo className="text-[#FBF8F3]" />
+            <BrandLogo />
             <p className="text-sm text-[#E4A090]">
               Handcrafted, person-first gift boxes made to preserve your most cherished memories.
             </p>
