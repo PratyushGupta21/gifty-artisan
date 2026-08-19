@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "You tell us who they are. We create what to give them. Handcrafted, personalised gift boxes with photo cards, artisan keepsakes and QR memory pages from ₹399.",
+          "You tell us who they are. We create what to give them. Handcrafted, personalised gift boxes with photo cards, artisan keepsakes and QR memory pages from ₹250.",
       },
       { property: "og:title", content: "The Little Box — Person-first handmade gift boxes" },
       {

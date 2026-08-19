@@ -11,7 +11,7 @@ export const TIERS: {
   {
     id: "little",
     name: "The Little Box",
-    price: 399,
+    price: 250,
     blurb: "A small, sincere hello.",
     includes: [
       "Core personalized trinkets",
@@ -23,7 +23,7 @@ export const TIERS: {
   {
     id: "lovely",
     name: "The Lovely Box",
-    price: 799,
+    price: 550,
     blurb: "For the people you think about often.",
     includes: [
       "Everything in The Little Box",
@@ -36,7 +36,7 @@ export const TIERS: {
   {
     id: "memory",
     name: "The Memory Box",
-    price: 1299,
+    price: 850,
     blurb: "The whole story, boxed.",
     includes: [
       "Premium handmade keepsake",
