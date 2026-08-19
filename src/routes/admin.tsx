@@ -118,47 +118,80 @@ export default function AdminPage() {
   }
 
   const ordersList = data?.orders ?? [];
+  const memoriesCount = data?.memories?.length ?? 0;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
-      <div className="flex flex-wrap items-baseline justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-[#231C18]">Your Dashboard</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Track your handcrafted gift box orders, letters, and memory QR links.
+    <div className="mx-auto max-w-5xl px-4 py-12 md:py-16 space-y-10">
+      {/* Editorial Header */}
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[rgba(212,163,115,0.25)] pb-6">
+        <div className="space-y-1.5">
+          <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
+            Studio Orders Dashboard
+          </span>
+          <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+            Your Orders & Memories
+          </h1>
+          <p className="text-sm text-[#6B5E55]">
+            Track your handcrafted gift box orders, letters, and digital memory links.
           </p>
         </div>
         <Link
           to="/build"
-          className="rounded-full bg-[#B85B3A] px-5 py-2.5 text-sm font-semibold text-[#FBF8F3] transition hover:bg-[#B85B3A]/90"
+          className="rounded-full bg-[#B85B3A] px-6 py-3 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#B85B3A]/90 hover:scale-[1.02]"
         >
           + Build a new box
         </Link>
       </div>
 
-      {ordersList.length === 0 ? (
-        <div className="paper-card mt-10 p-12 text-center">
-          <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-[#B85B3A]/10 text-[#B85B3A]">
-            <PackageOpen className="size-7" aria-hidden />
+      {/* Translucent Glassmorphism Stat Cards */}
+      <div className="grid gap-4 sm:grid-cols-3">
+        <div className="paper-card paper-card-hover p-5 space-y-2">
+          <span className="text-xs font-semibold text-[#6B5E55]">Total Gift Boxes</span>
+          <p className="font-[family-name:var(--font-serif)] text-3xl font-bold text-[#231C18]">
+            {ordersList.length}
+          </p>
+        </div>
+        <div className="paper-card paper-card-hover p-5 space-y-2">
+          <span className="text-xs font-semibold text-[#6B5E55]">Digital Memory Pages</span>
+          <p className="font-[family-name:var(--font-serif)] text-3xl font-bold text-[#B85B3A]">
+            {memoriesCount}
+          </p>
+        </div>
+        <div className="paper-card paper-card-hover p-5 space-y-2">
+          <span className="text-xs font-semibold text-[#6B5E55]">Studio Status</span>
+          <div className="flex items-center gap-2 pt-1">
+            <span className="size-2.5 rounded-full bg-[#708238] animate-pulse" />
+            <span className="text-sm font-bold text-[#708238]">Active Dispatch</span>
           </div>
-          <h2 className="mt-4 text-xl font-semibold text-[#231C18]">
+        </div>
+      </div>
+
+      {ordersList.length === 0 ? (
+        <div className="paper-card p-12 text-center space-y-4">
+          <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-[#B85B3A]/10 text-[#B85B3A]">
+            <PackageOpen className="size-8" aria-hidden />
+          </div>
+          <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
             You haven't placed any orders yet
           </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
+          <p className="mx-auto max-w-md text-sm text-[#6B5E55] leading-relaxed">
             Tell us who your gift is for and we'll handcraft a personalized box filled with photo
             cards and digital memory pages.
           </p>
-          <div className="mt-6">
+          <div className="pt-2">
             <Link
               to="/build"
-              className="inline-flex rounded-full bg-[#B85B3A] px-6 py-3 text-sm font-semibold text-[#FBF8F3] shadow-paper transition hover:bg-[#B85B3A]/90"
+              className="inline-flex rounded-full bg-[#B85B3A] px-7 py-3.5 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#B85B3A]/90 hover:scale-[1.02]"
             >
               Start Building a Box
             </Link>
           </div>
         </div>
       ) : (
-        <div className="mt-8 space-y-4">
+        <div className="space-y-4">
+          <h2 className="text-xs uppercase tracking-wider text-[#6B5E55] font-bold">
+            Order History
+          </h2>
           {ordersList.map((o: Record<string, unknown>) => {
             const rawId = String(o["id"]);
             const displayId = shortOrderId(rawId);
@@ -167,33 +200,36 @@ export default function AdminPage() {
             )?.["uuid_slug"] as string | undefined;
 
             return (
-              <article key={rawId} className="paper-card p-5">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <article key={rawId} className="paper-card paper-card-hover p-6 space-y-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgba(212,163,115,0.2)] pb-4">
                   <div className="flex items-center gap-3">
-                    <span className="rounded-md bg-[#B85B3A]/10 px-2.5 py-1 font-mono text-xs font-bold text-[#B85B3A]">
-                      #{displayId}
+                    <span className="rounded-lg border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3 py-1 font-mono text-xs font-bold text-[#B85B3A]">
+                      #TLB-{displayId}
                     </span>
-                    <h2 className="text-xl font-semibold text-[#231C18]">
-                      {String(o["recipient_name"])} · {String(o["tier_selected"])}
-                    </h2>
+                    <h3 className="font-[family-name:var(--font-serif)] text-xl font-bold text-[#231C18]">
+                      {String(o["recipient_name"])} · {String(o["tier_selected"])} Tier
+                    </h3>
                   </div>
-                  <span className="text-sm font-semibold text-[#B85B3A]">
+                  <span className="font-[family-name:var(--font-serif)] text-xl font-bold text-[#B85B3A]">
                     {inr(Number(o["total_amount"]))}
                   </span>
                 </div>
-                <p className="mt-2 text-xs text-muted-foreground">
+
+                <p className="text-xs text-[#6B5E55]">
                   Status:{" "}
-                  <span className="capitalize font-medium text-foreground">
+                  <span className="capitalize font-semibold text-[#231C18]">
                     {String(o["payment_status"])}
                   </span>{" "}
                   · Placed on {new Date(String(o["created_at"])).toLocaleString("en-IN")}
                 </p>
+
                 {Boolean(o["card_message"]) && (
-                  <p className="mt-3 rounded-xl bg-background p-3 text-sm italic">
+                  <p className="rounded-xl bg-[#FAF7F2] p-4 text-sm italic text-[#231C18]">
                     “{String(o["card_message"])}”
                   </p>
                 )}
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm pt-1 border-t border-border/40">
+
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm pt-2 border-t border-[rgba(212,163,115,0.2)]">
                   <div className="flex flex-wrap gap-2">
                     <button
                       type="button"
@@ -201,7 +237,7 @@ export default function AdminPage() {
                         void navigator.clipboard.writeText(String(o["card_message"] ?? ""));
                         toast.success("Letter text copied");
                       }}
-                      className="rounded-full border border-border bg-background px-4 py-2 hover:border-accent"
+                      className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
                     >
                       Copy letter
                     </button>
@@ -209,7 +245,7 @@ export default function AdminPage() {
                       <Link
                         to="/memory/$id"
                         params={{ id: slug }}
-                        className="rounded-full border border-border bg-background px-4 py-2 hover:border-accent"
+                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
                       >
                         Open memory page
                       </Link>
@@ -221,9 +257,9 @@ export default function AdminPage() {
                         )}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-border bg-background px-4 py-2 hover:border-accent"
+                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
                       >
-                        Print QR
+                        Print QR Code
                       </a>
                     )}
                   </div>
@@ -231,7 +267,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => setOrderToCancel(o)}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-4 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-100 hover:text-red-700"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50/80 px-4 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-100 hover:text-red-700"
                   >
                     <Trash2 className="size-3.5" /> Cancel Order
                   </button>
@@ -242,15 +278,17 @@ export default function AdminPage() {
         </div>
       )}
 
-      {/* Cancel Order Confirmation Modal */}
+      {/* Cancel Order Confirmation Modal with subtle Backdrop Blur */}
       {orderToCancel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-          <div className="paper-card w-full max-w-md p-6 space-y-4 bg-white shadow-paper-lg">
-            <h3 className="text-xl font-bold text-[#231C18]">Cancel Order</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C1612]/75 p-4 backdrop-blur-lg">
+          <div className="paper-card w-full max-w-md p-7 space-y-5 bg-[#FAF7F2] shadow-2xl border border-[rgba(212,163,115,0.35)]">
+            <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
+              Cancel Order
+            </h3>
+            <p className="text-sm text-[#6B5E55] leading-relaxed">
               Are you sure you want to cancel order{" "}
-              <strong className="text-[#231C18]">
-                #{shortOrderId(String(orderToCancel["id"]))}
+              <strong className="text-[#B85B3A] font-mono">
+                #TLB-{shortOrderId(String(orderToCancel["id"]))}
               </strong>
               ? This action cannot be undone.
             </p>
@@ -259,7 +297,7 @@ export default function AdminPage() {
                 type="button"
                 disabled={canceling}
                 onClick={() => setOrderToCancel(null)}
-                className="rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent disabled:opacity-50"
+                className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-5 py-2.5 text-sm font-semibold text-[#231C18] hover:bg-white/80 disabled:opacity-50 transition"
               >
                 Keep Order
               </button>
@@ -267,7 +305,7 @@ export default function AdminPage() {
                 type="button"
                 disabled={canceling}
                 onClick={() => void handleConfirmCancel()}
-                className="rounded-full bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-60"
+                className="rounded-full bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-60 transition"
               >
                 {canceling ? "Cancelling..." : "Yes, Cancel Order"}
               </button>

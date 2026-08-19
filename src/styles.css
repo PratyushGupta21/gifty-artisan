@@ -8,24 +8,33 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Luxury Craft Design System definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
  */
 /* css-lint ignore */
 @theme inline {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-serif: "Playfair Display", "Cinzel", ui-serif, Georgia, serif;
+  --font-display: "Cinzel", "Playfair Display", "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --shadow-paper: 0 4px 20px -2px rgba(35, 28, 24, 0.05);
-  --shadow-paper-lg: 0 18px 40px -18px rgba(35, 28, 24, 0.22);
+
+  --color-espresso: #1C1612;
+  --color-espresso-light: #231C18;
+  --color-cream: #FAF7F2;
+  --color-terracotta: #B85B3A;
+  --color-gold: #D4A373;
+  --color-sage: #708238;
+  --color-gold-sand: rgba(212, 163, 115, 0.25);
+
+  --shadow-paper: 0 4px 20px -2px rgba(28, 22, 18, 0.06);
+  --shadow-paper-lg: 0 18px 40px -18px rgba(28, 22, 18, 0.22);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -52,33 +61,33 @@
 :root,
 .dark {
   --radius: 1rem;
-  /* Soft handmade paper cream #FAF7F2 */
+  /* Canvas: Soft Artisan Cream #FAF7F2 */
   --background: #FAF7F2;
-  /* Deep espresso ink #231C18 */
+  /* Ink: Warm Espresso #231C18 */
   --foreground: #231C18;
   /* Translucent frosted glass card */
-  --card: rgba(255, 255, 255, 0.78);
+  --card: rgba(255, 255, 255, 0.82);
   --card-foreground: #231C18;
   --popover: #FAF7F2;
   --popover-foreground: #231C18;
-  /* Warm terracotta #B85B3A */
+  /* Warm Terracotta #B85B3A */
   --primary: #B85B3A;
   --primary-foreground: #FAF7F2;
-  /* Dried eucalyptus #6E7E65 */
-  --secondary: #6E7E65;
+  /* Sage #708238 */
+  --secondary: #708238;
   --secondary-foreground: #FAF7F2;
   --muted: #F2EAE1;
-  /* Warm slate ink #6B5E55 */
+  /* Muted slate brown #6B5E55 */
   --muted-foreground: #6B5E55;
-  /* Pressed rose #E4A090 */
-  --accent: #E4A090;
-  --accent-foreground: #231C18;
+  /* Muted Gold #D4A373 */
+  --accent: #D4A373;
+  --accent-foreground: #1C1612;
   --destructive: #B91C1C;
   --destructive-foreground: #FAF7F2;
-  /* Subtle terracotta border */
-  --border: rgba(184, 91, 58, 0.14);
-  --input: rgba(184, 91, 58, 0.18);
-  --ring: #E4A090;
+  /* Delicate Gold-Sand rgba(212, 163, 115, 0.25) */
+  --border: rgba(212, 163, 115, 0.25);
+  --input: rgba(212, 163, 115, 0.35);
+  --ring: #D4A373;
 }
 
 @layer base {
@@ -90,8 +99,8 @@
     background-color: #FAF7F2;
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    /* Soft warm brown dot grid overlay (~0.15 opacity look) */
-    background-image: radial-gradient(rgba(35, 28, 24, 0.07) 1.2px, transparent 1.2px);
+    /* Soft warm brown dot grid overlay (~0.12 opacity look) */
+    background-image: radial-gradient(rgba(35, 28, 24, 0.06) 1.2px, transparent 1.2px);
     background-size: 24px 24px;
     min-height: 100vh;
   }
@@ -106,21 +115,63 @@
   }
 }
 
-/* Glassmorphism Refinement for Cards */
+/* Glassmorphism & Refined Micro-Interactions */
 @layer utilities {
   .paper-card {
-    background-color: rgba(255, 255, 255, 0.78);
+    background-color: rgba(255, 255, 255, 0.82);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(184, 91, 58, 0.14);
+    border: 1px solid rgba(212, 163, 115, 0.25);
     border-radius: var(--radius-2xl);
-    box-shadow: 0 4px 20px -2px rgba(35, 28, 24, 0.04);
-    transition: all 0.25s ease-in-out;
+    box-shadow: 0 4px 20px -2px rgba(28, 22, 18, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  .paper-card-hover {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+  }
   .paper-card-hover:hover {
-    box-shadow: 0 12px 28px -4px rgba(35, 28, 24, 0.08);
-    border-color: rgba(184, 91, 58, 0.28);
-    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -4px rgba(28, 22, 18, 0.12);
+    border-color: rgba(212, 163, 115, 0.5);
+    transform: scale(1.02);
+  }
+
+  .dark-luxury-card {
+    background-color: #1C1612;
+    color: #FAF7F2;
+    border: 1px solid rgba(212, 163, 115, 0.25);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+  }
+
+  .input-luxury {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(212, 163, 115, 0.3);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: #231C18;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  .input-luxury:focus {
+    border-color: #B85B3A;
+    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25), 0 0 15px rgba(212, 163, 115, 0.2);
+  }
+
+  .dark-input-luxury {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(212, 163, 115, 0.25);
+    background-color: rgba(35, 28, 24, 0.6);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    color: #FAF7F2;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+  }
+  .dark-input-luxury:focus {
+    border-color: #D4A373;
+    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.3), 0 0 15px rgba(212, 163, 115, 0.25);
   }
 }

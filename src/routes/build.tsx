@@ -47,7 +47,7 @@ export const Route = createFileRoute("/build")({
 const STEPS = ["Recipient", "Memories", "Choose tier", "Review & order"];
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-ring";
+  "w-full rounded-xl border border-[rgba(212,163,115,0.3)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]";
 
 function BuildPage() {
   const search = Route.useSearch();
@@ -160,26 +160,33 @@ function BuildPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 md:py-12">
-      <h1 className="text-3xl">Build their gift box</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Four short steps. Your answers save automatically.
-      </p>
+    <div className="mx-auto max-w-6xl px-4 py-8 md:py-12">
+      <div className="space-y-2">
+        <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
+          Step-by-Step Artisan Builder
+        </span>
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+          Build their gift box
+        </h1>
+        <p className="text-sm text-[#6B5E55]">
+          Four short steps. Your answers update your live box summary in real time.
+        </p>
+      </div>
 
-      <ol className="mt-6 flex flex-wrap gap-2" aria-label="Progress">
+      <ol className="mt-8 flex flex-wrap gap-2.5" aria-label="Progress">
         {STEPS.map((label, i) => (
-          <li key={label} className="flex-1">
+          <li key={label} className="flex-1 min-w-[120px]">
             <button
               type="button"
               onClick={() => setStep(i)}
               aria-current={step === i ? "step" : undefined}
               className={cn(
-                "w-full rounded-full border px-3 py-2 text-xs font-medium transition",
+                "w-full rounded-full border px-4 py-2.5 text-xs font-semibold transition-all duration-200",
                 i === step
-                  ? "border-primary bg-primary text-primary-foreground"
+                  ? "border-[#B85B3A] bg-[#B85B3A] text-[#FAF7F2] shadow-md scale-[1.02]"
                   : i < step
-                    ? "border-secondary bg-secondary/15 text-foreground"
-                    : "border-border bg-card text-muted-foreground",
+                    ? "border-[#708238]/40 bg-[#708238]/15 text-[#231C18]"
+                    : "border-[rgba(212,163,115,0.3)] bg-white/80 text-[#6B5E55] hover:border-[#D4A373]",
               )}
             >
               {i + 1}. {label}
@@ -188,302 +195,382 @@ function BuildPage() {
         ))}
       </ol>
 
-      <AnimatePresence mode="wait">
-        <motion.section
-          key={step}
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -24 }}
-          transition={{ duration: 0.25 }}
-          className="paper-card mt-6 space-y-6 p-5 md:p-8"
-        >
-          {step === 0 && (
-            <>
-              <h2 className="text-2xl">Who is this for?</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium">Recipient's name</span>
-                  <input
-                    className={inputClass}
-                    value={state.recipientName}
-                    onChange={(e) => set({ recipientName: e.target.value })}
-                    placeholder="Aarohi"
-                  />
-                </label>
-                <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium">Your name</span>
-                  <input
-                    className={inputClass}
-                    value={state.senderName}
-                    onChange={(e) => set({ senderName: e.target.value })}
-                    placeholder="Kabir"
-                  />
-                </label>
-                <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium">Relationship</span>
-                  <select
-                    className={inputClass}
-                    value={state.relationship}
-                    onChange={(e) => set({ relationship: e.target.value })}
-                  >
-                    <option value="">Select</option>
-                    {RELATIONSHIPS.map((r) => (
-                      <option key={r}>{r}</option>
-                    ))}
-                  </select>
-                </label>
-                <label className="block text-sm">
-                  <span className="mb-1.5 block font-medium">Occasion</span>
-                  <select
-                    className={inputClass}
-                    value={state.occasion}
-                    onChange={(e) => set({ occasion: e.target.value })}
-                  >
-                    <option value="">Select</option>
-                    {OCCASIONS.map((o) => (
-                      <option key={o}>{o}</option>
-                    ))}
-                  </select>
-                </label>
-              </div>
-              <fieldset>
-                <legend className="mb-3 text-sm font-medium">What are they like?</legend>
-                <div className="flex flex-wrap gap-2">
-                  {PERSONALITY_TAGS.map((t) => (
-                    <Chip
-                      key={t}
-                      label={t}
-                      active={state.personalityTags.includes(t)}
-                      onClick={() => toggle("personalityTags", t)}
-                    />
-                  ))}
-                </div>
-              </fieldset>
-            </>
-          )}
-
-          {step === 1 && (
-            <>
-              <h2 className="text-2xl">Memories & personalisation</h2>
-              <label className="block text-sm">
-                <span className="mb-1.5 block font-medium">
-                  Describe an inside joke, cherished memory, or the feeling you want this box to
-                  carry
-                </span>
-                <textarea
-                  className={cn(inputClass, "min-h-32")}
-                  value={state.insideJoke}
-                  onChange={(e) => set({ insideJoke: e.target.value })}
-                />
-              </label>
-              <div>
-                <p className="mb-2 text-sm font-medium">Photos for their cards</p>
-                <PhotoUploader photos={state.photos} onChange={(photos) => set({ photos })} />
-              </div>
-              <label className="block text-sm">
-                <span className="mb-1.5 block font-medium">Spotify track or playlist link</span>
-                <input
-                  className={inputClass}
-                  value={state.spotifyUrl}
-                  onChange={(e) => set({ spotifyUrl: e.target.value })}
-                  placeholder="https://open.spotify.com/track/..."
-                />
-              </label>
-              <label className="block text-sm">
-                <span className="mb-1.5 block font-medium">
-                  Message for the handwritten card ({state.cardMessage.length}/500)
-                </span>
-                <textarea
-                  maxLength={500}
-                  className={cn(inputClass, "min-h-32")}
-                  value={state.cardMessage}
-                  onChange={(e) => set({ cardMessage: e.target.value })}
-                />
-              </label>
-            </>
-          )}
-
-          {step === 2 && (
-            <>
-              <h2 className="text-2xl">Choose a tier</h2>
-              <div className="grid gap-4">
-                {TIERS.map((t) => (
-                  <button
-                    key={t.id}
-                    type="button"
-                    onClick={() => set({ tier: t.id as TierId })}
-                    aria-pressed={tier === t.id}
-                    className={cn(
-                      "rounded-2xl border p-5 text-left transition",
-                      tier === t.id
-                        ? "border-primary bg-accent/20 ring-2 ring-ring"
-                        : "border-border bg-background hover:border-accent",
-                    )}
-                  >
-                    <div className="flex items-baseline justify-between gap-3">
-                      <span className="font-[family-name:var(--font-display)] text-xl">
-                        {t.name}
-                      </span>
-                      <span className="font-semibold text-primary">{inr(t.price)}</span>
-                    </div>
-                    <p className="mt-2 text-sm text-muted-foreground">{t.includes.join(" · ")}</p>
-                  </button>
-                ))}
-              </div>
-              <fieldset className="space-y-3">
-                <legend className="text-sm font-medium">Add-ons</legend>
-                {ADD_ONS.map((a) => (
-                  <label
-                    key={a.id}
-                    className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-border bg-background px-4 py-3 text-sm"
-                  >
-                    <span className="flex items-center gap-3">
+      <div className="mt-8 grid gap-8 lg:grid-cols-12 items-start">
+        {/* Main 4-step wizard card container */}
+        <div className="lg:col-span-7 xl:col-span-8">
+          <AnimatePresence mode="wait">
+            <motion.section
+              key={step}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.25 }}
+              className="paper-card space-y-6 p-6 md:p-8"
+            >
+              {step === 0 && (
+                <>
+                  <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
+                    Who is this for?
+                  </h2>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="block text-sm">
+                      <span className="mb-1.5 block font-medium text-[#231C18]">Recipient's name</span>
                       <input
-                        type="checkbox"
-                        className="size-4 accent-[var(--color-primary)]"
-                        checked={state.addOns.includes(a.id)}
-                        onChange={() => toggle("addOns", a.id)}
+                        className={inputClass}
+                        value={state.recipientName}
+                        onChange={(e) => set({ recipientName: e.target.value })}
+                        placeholder="Aarohi"
                       />
-                      {a.label}
-                    </span>
-                    <span className="text-muted-foreground">+{inr(a.price)}</span>
-                  </label>
-                ))}
-              </fieldset>
-              <p className="text-right font-[family-name:var(--font-display)] text-2xl">
-                {inr(totals.total)}
-              </p>
-            </>
-          )}
-
-          {step === 3 && (
-            <>
-              <h2 className="text-2xl">Review your box</h2>
-              <div className="rounded-2xl border border-border bg-background p-5">
-                <p className="text-sm text-muted-foreground">
-                  For <strong className="text-foreground">{state.recipientName || "—"}</strong>
-                  {state.occasion ? ` · ${state.occasion}` : ""}
-                  {state.relationship ? ` · ${state.relationship}` : ""}
-                </p>
-                {state.photos.length > 0 && (
-                  <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {state.photos.slice(0, 8).map((p) => (
-                      <li
-                        key={p}
-                        className="rounded-lg border border-border bg-card p-2 shadow-paper"
+                    </label>
+                    <label className="block text-sm">
+                      <span className="mb-1.5 block font-medium text-[#231C18]">Your name</span>
+                      <input
+                        className={inputClass}
+                        value={state.senderName}
+                        onChange={(e) => set({ senderName: e.target.value })}
+                        placeholder="Kabir"
+                      />
+                    </label>
+                    <label className="block text-sm">
+                      <span className="mb-1.5 block font-medium text-[#231C18]">Relationship</span>
+                      <select
+                        className={inputClass}
+                        value={state.relationship}
+                        onChange={(e) => set({ relationship: e.target.value })}
                       >
-                        <img
-                          src={p}
-                          alt="Photo card preview"
-                          loading="lazy"
-                          className="aspect-square w-full rounded object-cover"
+                        <option value="">Select relationship</option>
+                        {RELATIONSHIPS.map((r) => (
+                          <option key={r}>{r}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="block text-sm">
+                      <span className="mb-1.5 block font-medium text-[#231C18]">Occasion</span>
+                      <select
+                        className={inputClass}
+                        value={state.occasion}
+                        onChange={(e) => set({ occasion: e.target.value })}
+                      >
+                        <option value="">Select occasion</option>
+                        {OCCASIONS.map((o) => (
+                          <option key={o}>{o}</option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                  <fieldset>
+                    <legend className="mb-3 text-sm font-medium text-[#231C18]">What are they like?</legend>
+                    <div className="flex flex-wrap gap-2">
+                      {PERSONALITY_TAGS.map((t) => (
+                        <Chip
+                          key={t}
+                          label={t}
+                          active={state.personalityTags.includes(t)}
+                          onClick={() => toggle("personalityTags", t)}
                         />
-                        <span className="mt-1 block truncate text-[10px] text-muted-foreground">
-                          photo card
-                        </span>
-                      </li>
+                      ))}
+                    </div>
+                  </fieldset>
+                </>
+              )}
+
+              {step === 1 && (
+                <>
+                  <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
+                    Memories & personalisation
+                  </h2>
+                  <label className="block text-sm">
+                    <span className="mb-1.5 block font-medium text-[#231C18]">
+                      Describe an inside joke, cherished memory, or the feeling you want this box to carry
+                    </span>
+                    <textarea
+                      className={cn(inputClass, "min-h-32")}
+                      value={state.insideJoke}
+                      onChange={(e) => set({ insideJoke: e.target.value })}
+                    />
+                  </label>
+                  <div>
+                    <p className="mb-2 text-sm font-medium text-[#231C18]">Photos for their cards</p>
+                    <PhotoUploader photos={state.photos} onChange={(photos) => set({ photos })} />
+                  </div>
+                  <label className="block text-sm">
+                    <span className="mb-1.5 block font-medium text-[#231C18]">Spotify track or playlist link</span>
+                    <input
+                      className={inputClass}
+                      value={state.spotifyUrl}
+                      onChange={(e) => set({ spotifyUrl: e.target.value })}
+                      placeholder="https://open.spotify.com/track/..."
+                    />
+                  </label>
+                  <label className="block text-sm">
+                    <span className="mb-1.5 block font-medium text-[#231C18]">
+                      Message for the handwritten card ({state.cardMessage.length}/500)
+                    </span>
+                    <textarea
+                      maxLength={500}
+                      className={cn(inputClass, "min-h-32")}
+                      value={state.cardMessage}
+                      onChange={(e) => set({ cardMessage: e.target.value })}
+                    />
+                  </label>
+                </>
+              )}
+
+              {step === 2 && (
+                <>
+                  <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
+                    Choose a tier
+                  </h2>
+                  <div className="grid gap-4">
+                    {TIERS.map((t) => (
+                      <button
+                        key={t.id}
+                        type="button"
+                        onClick={() => set({ tier: t.id as TierId })}
+                        aria-pressed={tier === t.id}
+                        className={cn(
+                          "rounded-2xl border p-5 text-left transition-all duration-200 hover:scale-[1.01]",
+                          tier === t.id
+                            ? "border-[#B85B3A] bg-[#D4A373]/15 ring-2 ring-[#B85B3A]"
+                            : "border-[rgba(212,163,115,0.3)] bg-white/80 hover:border-[#D4A373]",
+                        )}
+                      >
+                        <div className="flex items-baseline justify-between gap-3">
+                          <span className="font-[family-name:var(--font-serif)] text-xl font-bold text-[#231C18]">
+                            {t.name}
+                          </span>
+                          <span className="font-bold text-[#B85B3A]">{inr(t.price)}</span>
+                        </div>
+                        <p className="mt-2 text-xs text-[#6B5E55]">{t.includes.join(" · ")}</p>
+                      </button>
                     ))}
-                  </ul>
-                )}
-                {state.cardMessage && (
-                  <p className="mt-4 rounded-xl bg-card p-4 text-sm italic">
-                    “{state.cardMessage}”
+                  </div>
+                  <fieldset className="space-y-3 pt-2">
+                    <legend className="text-sm font-medium text-[#231C18]">Add-ons</legend>
+                    {ADD_ONS.map((a) => (
+                      <label
+                        key={a.id}
+                        className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-[rgba(212,163,115,0.3)] bg-white/80 px-4 py-3 text-sm transition hover:border-[#D4A373]"
+                      >
+                        <span className="flex items-center gap-3">
+                          <input
+                            type="checkbox"
+                            className="size-4 accent-[#B85B3A]"
+                            checked={state.addOns.includes(a.id)}
+                            onChange={() => toggle("addOns", a.id)}
+                          />
+                          {a.label}
+                        </span>
+                        <span className="text-[#6B5E55]">+{inr(a.price)}</span>
+                      </label>
+                    ))}
+                  </fieldset>
+                </>
+              )}
+
+              {step === 3 && (
+                <>
+                  <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
+                    Review your box
+                  </h2>
+                  <div className="rounded-2xl border border-[rgba(212,163,115,0.3)] bg-white/90 p-5">
+                    <p className="text-sm text-[#6B5E55]">
+                      For <strong className="text-[#231C18]">{state.recipientName || "—"}</strong>
+                      {state.occasion ? ` · ${state.occasion}` : ""}
+                      {state.relationship ? ` · ${state.relationship}` : ""}
+                    </p>
+                    {state.photos.length > 0 && (
+                      <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                        {state.photos.slice(0, 8).map((p) => (
+                          <li
+                            key={p}
+                            className="rounded-lg border border-[rgba(212,163,115,0.3)] bg-white p-2 shadow-sm hover:scale-[1.02] transition"
+                          >
+                            <img
+                              src={p}
+                              alt="Photo card preview"
+                              loading="lazy"
+                              className="aspect-square w-full rounded object-cover"
+                            />
+                            <span className="mt-1 block truncate text-[10px] text-[#6B5E55]">
+                              photo card
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {state.cardMessage && (
+                      <p className="mt-4 rounded-xl bg-[#FAF7F2] p-4 text-sm italic text-[#231C18]">
+                        “{state.cardMessage}”
+                      </p>
+                    )}
+                  </div>
+
+                  <dl className="space-y-2 text-sm text-[#231C18]">
+                    <div className="flex justify-between">
+                      <dt className="text-[#6B5E55]">Package</dt>
+                      <dd className="font-semibold">{inr(totals.tierPrice)}</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-[#6B5E55]">Add-ons</dt>
+                      <dd className="font-semibold">{inr(totals.addOnTotal)}</dd>
+                    </div>
+                    <div className="flex justify-between">
+                      <dt className="text-[#6B5E55]">Shipping {totals.shipping === 0 && "(free over ₹999)"}</dt>
+                      <dd className="font-semibold">{inr(totals.shipping)}</dd>
+                    </div>
+                    <div className="flex justify-between border-t border-[rgba(212,163,115,0.3)] pt-2 text-base font-bold text-[#B85B3A]">
+                      <dt>Total</dt>
+                      <dd className="font-[family-name:var(--font-serif)] text-xl">{inr(totals.total)}</dd>
+                    </div>
+                  </dl>
+
+                  <div className="flex flex-wrap items-center gap-2 pt-2">
+                    <label className="sr-only" htmlFor="pincode">
+                      Delivery pincode
+                    </label>
+                    <input
+                      id="pincode"
+                      inputMode="numeric"
+                      maxLength={6}
+                      placeholder="Delivery pincode"
+                      className={cn(inputClass, "max-w-48")}
+                      value={state.pincode}
+                      onChange={(e) => set({ pincode: e.target.value.replace(/\D/g, "") })}
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setPinResult(
+                          state.pincode.length === 6
+                            ? `Crafted and delivered in ${state.addOns.includes("express") ? "3–4" : "6–8"} days`
+                            : "Enter a valid 6-digit pincode",
+                        )
+                      }
+                      className="rounded-full border border-[rgba(212,163,115,0.4)] bg-white px-5 py-3 text-sm font-semibold text-[#231C18] hover:bg-[#D4A373]/15 transition"
+                    >
+                      Check delivery
+                    </button>
+                    {pinResult && (
+                      <span className="flex items-center gap-2 text-sm text-[#708238] font-semibold">
+                        <Truck className="size-4" aria-hidden /> {pinResult}
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => void placeOrder()}
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#B85B3A] px-6 py-3.5 font-semibold text-[#FAF7F2] shadow-lg shadow-[#B85B3A]/20 transition hover:bg-[#B85B3A]/90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60"
+                  >
+                    {submitting ? (
+                      <Loader2 className="size-4 animate-spin" aria-hidden />
+                    ) : (
+                      <Check className="size-4" aria-hidden />
+                    )}
+                    Place order · {inr(totals.total)}
+                  </button>
+                  <p className="text-center text-xs text-[#6B5E55]">
+                    UPI, cards, netbanking and wallets supported at payment.
                   </p>
-                )}
-              </div>
+                </>
+              )}
 
-              <dl className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <dt>Package</dt>
-                  <dd>{inr(totals.tierPrice)}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt>Add-ons</dt>
-                  <dd>{inr(totals.addOnTotal)}</dd>
-                </div>
-                <div className="flex justify-between">
-                  <dt>Shipping {totals.shipping === 0 && "(free over ₹999)"}</dt>
-                  <dd>{inr(totals.shipping)}</dd>
-                </div>
-                <div className="flex justify-between border-t border-border pt-2 text-base font-semibold">
-                  <dt>Total</dt>
-                  <dd>{inr(totals.total)}</dd>
-                </div>
-              </dl>
-
-              <div className="flex flex-wrap items-center gap-2">
-                <label className="sr-only" htmlFor="pincode">
-                  Delivery pincode
-                </label>
-                <input
-                  id="pincode"
-                  inputMode="numeric"
-                  maxLength={6}
-                  placeholder="Delivery pincode"
-                  className={cn(inputClass, "max-w-48")}
-                  value={state.pincode}
-                  onChange={(e) => set({ pincode: e.target.value.replace(/\D/g, "") })}
-                />
+              <div className="flex justify-between gap-3 pt-4 border-t border-[rgba(212,163,115,0.2)]">
                 <button
                   type="button"
-                  onClick={() =>
-                    setPinResult(
-                      state.pincode.length === 6
-                        ? `Crafted and delivered in ${state.addOns.includes("express") ? "3–4" : "6–8"} days`
-                        : "Enter a valid 6-digit pincode",
-                    )
-                  }
-                  className="rounded-full border border-border bg-card px-4 py-3 text-sm hover:border-accent"
+                  onClick={() => setStep((s) => Math.max(0, s - 1))}
+                  disabled={step === 0}
+                  className="rounded-full border border-[rgba(212,163,115,0.3)] bg-white px-6 py-2.5 text-sm font-medium text-[#231C18] transition hover:bg-[#FAF7F2] disabled:opacity-40"
                 >
-                  Check delivery
+                  Back
                 </button>
-                {pinResult && (
-                  <span className="flex items-center gap-2 text-sm text-secondary">
-                    <Truck className="size-4" aria-hidden /> {pinResult}
-                  </span>
+                {step < 3 && (
+                  <button
+                    type="button"
+                    onClick={next}
+                    className="rounded-full bg-[#B85B3A] px-7 py-2.5 text-sm font-semibold text-[#FAF7F2] shadow-sm transition hover:bg-[#B85B3A]/90 hover:scale-[1.02]"
+                  >
+                    Continue
+                  </button>
                 )}
               </div>
+            </motion.section>
+          </AnimatePresence>
+        </div>
 
-              <button
-                type="button"
-                disabled={submitting}
-                onClick={() => void placeOrder()}
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground disabled:opacity-60"
-              >
-                {submitting ? (
-                  <Loader2 className="size-4 animate-spin" aria-hidden />
-                ) : (
-                  <Check className="size-4" aria-hidden />
-                )}
-                Place order · {inr(totals.total)}
-              </button>
-              <p className="text-center text-xs text-muted-foreground">
-                UPI, cards, netbanking and wallets supported at payment.
-              </p>
-            </>
-          )}
+        {/* Dark Luxury Live-Summary Side Panel */}
+        <aside className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24">
+          <div className="dark-luxury-card rounded-3xl p-6 md:p-7 space-y-6">
+            <div className="flex items-center justify-between border-b border-[rgba(212,163,115,0.25)] pb-4">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4A373]">
+                  Live Box Summary
+                </span>
+                <h3 className="font-[family-name:var(--font-serif)] text-xl font-bold text-[#FAF7F2]">
+                  {state.recipientName ? `${state.recipientName}'s Box` : "Handcrafted Box"}
+                </h3>
+              </div>
+              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#B85B3A]/25 text-[#D4A373] border border-[#B85B3A]/40">
+                {tier ? TIERS.find((t) => t.id === tier)?.name : "Pick Tier"}
+              </span>
+            </div>
 
-          <div className="flex justify-between gap-3 pt-2">
-            <button
-              type="button"
-              onClick={() => setStep((s) => Math.max(0, s - 1))}
-              disabled={step === 0}
-              className="rounded-full border border-border bg-background px-5 py-2.5 text-sm disabled:opacity-40"
-            >
-              Back
-            </button>
-            {step < 3 && (
-              <button
-                type="button"
-                onClick={next}
-                className="rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground"
-              >
-                Continue
-              </button>
-            )}
+            <div className="space-y-3.5 text-xs text-[#FAF7F2]/80">
+              <div className="flex justify-between py-1 border-b border-white/10">
+                <span className="text-[#FAF7F2]/60">For</span>
+                <span className="font-semibold text-[#FAF7F2]">{state.recipientName || "—"}</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-white/10">
+                <span className="text-[#FAF7F2]/60">From</span>
+                <span className="font-semibold text-[#FAF7F2]">{state.senderName || "—"}</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-white/10">
+                <span className="text-[#FAF7F2]/60">Occasion</span>
+                <span className="font-semibold text-[#FAF7F2]">{state.occasion || "—"}</span>
+              </div>
+              <div className="flex justify-between py-1 border-b border-white/10">
+                <span className="text-[#FAF7F2]/60">Photo Cards</span>
+                <span className="font-semibold text-[#D4A373]">{state.photos.length} uploaded</span>
+              </div>
+              {state.personalityTags.length > 0 && (
+                <div className="pt-1">
+                  <span className="block text-[11px] text-[#FAF7F2]/60 mb-2">Personality Tags</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {state.personalityTags.map((t) => (
+                      <span key={t} className="rounded-md bg-white/10 px-2.5 py-1 text-[10px] font-medium text-[#D4A373] border border-white/5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-2 pt-3 border-t border-[rgba(212,163,115,0.25)]">
+              <div className="flex justify-between text-xs text-[#FAF7F2]/70">
+                <span>Tier Package</span>
+                <span>{inr(totals.tierPrice)}</span>
+              </div>
+              {totals.addOnTotal > 0 && (
+                <div className="flex justify-between text-xs text-[#FAF7F2]/70">
+                  <span>Add-ons Total</span>
+                  <span>+{inr(totals.addOnTotal)}</span>
+                </div>
+              )}
+              <div className="flex justify-between text-xs text-[#FAF7F2]/70">
+                <span>Shipping</span>
+                <span>{totals.shipping === 0 ? "FREE" : inr(totals.shipping)}</span>
+              </div>
+              <div className="flex justify-between pt-3 text-base font-bold text-[#D4A373]">
+                <span>Estimated Total</span>
+                <span className="font-[family-name:var(--font-serif)] text-2xl text-[#D4A373]">{inr(totals.total)}</span>
+              </div>
+            </div>
           </div>
-        </motion.section>
-      </AnimatePresence>
+        </aside>
+      </div>
     </div>
   );
 }

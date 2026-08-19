@@ -43,12 +43,12 @@ export default function FAQPage() {
       {/* Header */}
       <div className="space-y-2">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3.5 py-1 text-xs font-semibold text-[#B85B3A]">
-          <HelpCircle className="size-3.5" /> Support & FAQs
+          <HelpCircle className="size-3.5" /> Studio Support & FAQs
         </span>
-        <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
           Frequently Asked Questions
         </h1>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-[#6B5E55]">
           Everything you need to know about building, customizing, and delivering your handcrafted box.
         </p>
       </div>
@@ -58,16 +58,16 @@ export default function FAQPage() {
         {FAQS.map((faq, i) => {
           const Icon = faq.icon;
           return (
-            <section key={i} className="paper-card p-6 md:p-8 space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[#B85B3A]/10 text-[#B85B3A]">
-                  <Icon className="size-4" />
+            <section key={i} className="paper-card paper-card-hover p-6 md:p-8 space-y-3">
+              <div className="flex items-center gap-3.5">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#B85B3A]/10 text-[#B85B3A]">
+                  <Icon className="size-5" />
                 </div>
-                <h2 className="text-lg font-bold text-[#231C18] md:text-xl">
+                <h2 className="font-[family-name:var(--font-serif)] text-lg font-bold text-[#231C18] md:text-xl">
                   {faq.q}
                 </h2>
               </div>
-              <p className="pl-12 text-sm leading-relaxed text-[#231C18]/80 md:text-base">
+              <p className="pl-13 text-sm leading-relaxed text-[#6B5E55] md:text-base">
                 {faq.a}
               </p>
             </section>
@@ -76,21 +76,21 @@ export default function FAQPage() {
       </div>
 
       {/* Bottom Assistance Box */}
-      <div className="paper-card p-8 text-center space-y-3 bg-[#FBF8F3]">
-        <h2 className="text-xl font-bold text-[#231C18]">Still have questions?</h2>
-        <p className="text-sm text-muted-foreground">
+      <div className="paper-card paper-card-hover p-8 md:p-10 text-center space-y-4 bg-[#FAF7F2]">
+        <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">Still have questions?</h2>
+        <p className="text-sm text-[#6B5E55] max-w-md mx-auto">
           We're here to help you craft the perfect gift memory. Get in touch or start building your box.
         </p>
         <div className="pt-2 flex flex-wrap justify-center gap-4">
           <Link
             to="/build"
-            className="rounded-full bg-[#B85B3A] px-6 py-2.5 text-sm font-semibold text-[#FBF8F3] shadow-paper transition hover:bg-[#B85B3A]/90"
+            className="rounded-full bg-[#B85B3A] px-7 py-3 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#B85B3A]/90 hover:scale-[1.02]"
           >
             Start Building a Box
           </Link>
           <a
             href="mailto:support@thelittlebox.in"
-            className="rounded-full border border-[#E8DFC8] bg-white px-6 py-2.5 text-sm font-semibold text-[#231C18] transition hover:bg-[#E8DFC8]/20"
+            className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-7 py-3 text-sm font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15 hover:scale-[1.02]"
           >
             Contact Support
           </a>

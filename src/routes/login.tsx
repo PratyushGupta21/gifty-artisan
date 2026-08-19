@@ -118,69 +118,72 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-[calc(100vh-65px)] w-full">
       {/* ─── LEFT DESKTOP HERO PANEL ─── */}
-      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-[#1A1412] p-12 text-[#FBF8F3] lg:flex">
+      <div className="relative hidden w-1/2 flex-col justify-between overflow-hidden bg-[#1C1612] p-12 text-[#FAF7F2] lg:flex">
         {/* Background Editorial Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroBox}
             alt="Handcrafted Memory Gift Box"
-            className="h-full w-full object-cover opacity-25"
+            className="h-full w-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-[#1A1412]/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1612] via-[#1C1612]/80 to-[#1C1612]/90 backdrop-blur-[2px]" />
         </div>
 
         {/* Header Branding */}
         <div className="relative z-10">
-          <BrandLogo textColor="text-[#FBF8F3]" />
+          <BrandLogo textColor="text-[#FAF7F2]" />
         </div>
 
         {/* Content Body */}
         <div className="relative z-10 my-auto max-w-lg space-y-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#B85B3A]/40 bg-[#B85B3A]/20 px-3.5 py-1 text-xs font-semibold text-[#E4A090]">
-            • Handcrafted Gift Curation
+          <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(212,163,115,0.35)] bg-[rgba(212,163,115,0.12)] px-4 py-1 text-xs font-semibold uppercase tracking-wider text-[#D4A373]">
+            ✦ Artisan Gift Curation Studio
           </span>
 
-          <h1 className="font-[family-name:var(--font-display)] text-4xl leading-tight tracking-tight text-[#FBF8F3] md:text-5xl">
-            You tell us who they are. We create what to give them.
+          <h1 className="font-[family-name:var(--font-serif)] text-4xl leading-tight font-extrabold text-[#FAF7F2] md:text-5xl">
+            You tell us who they are. <span className="text-[#D4A373]">We create what to give them.</span>
           </h1>
 
-          <ul className="space-y-4 pt-2 text-sm text-[#FBF8F3]/85">
+          <ul className="space-y-4 pt-2 text-sm text-[#FAF7F2]/85">
             <li className="flex items-start gap-3">
               <span className="text-lg">🎁</span>
               <span>
-                <strong className="text-[#FBF8F3]">Custom physical memory box & photo prints</strong> — tailored around their personality and your shared story.
+                <strong className="text-[#FAF7F2]">Custom physical memory box & photo prints</strong> — tailored around their personality and your shared story.
               </span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-lg">✉️</span>
               <span>
-                <strong className="text-[#FBF8F3]">Interactive digital memory envelope</strong> — with custom photo cards, letters & Spotify track integration.
+                <strong className="text-[#FAF7F2]">Interactive digital memory envelope</strong> — with custom photo cards, letters & Spotify track integration.
               </span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-lg">📦</span>
               <span>
-                <strong className="text-[#FBF8F3]">Hand-assembled with care</strong> — crafted by verified micro-creators & shipped across India.
+                <strong className="text-[#FAF7F2]">Hand-assembled with care</strong> — crafted by verified micro-creators & shipped across India.
               </span>
             </li>
           </ul>
         </div>
 
         {/* Footer info */}
-        <div className="relative z-10 text-xs text-[#FBF8F3]/50">
+        <div className="relative z-10 text-xs text-[#FAF7F2]/50">
           © {new Date().getFullYear()} The Little Box. All rights reserved.
         </div>
       </div>
 
       {/* ─── RIGHT FORM PANEL ─── */}
-      <div className="flex w-full items-center justify-center bg-[#FBF8F3] p-6 lg:w-1/2 lg:p-12">
+      <div className="flex w-full items-center justify-center bg-[#FAF7F2] p-6 lg:w-1/2 lg:p-12">
         <div className="w-full max-w-md space-y-6">
           {/* Header */}
           <div className="space-y-2 text-left">
-            <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[#231C18]">
+            <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
+              Account Access
+            </span>
+            <h2 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18]">
               {isSignUp ? "Create your account" : "Welcome back"}
             </h2>
-            <p className="text-sm text-[#231C18]/70">
+            <p className="text-sm text-[#6B5E55]">
               {isSignUp
                 ? "Enter your details to save your gift boxes & track orders."
                 : "Sign in to continue building your handcrafted gift box."}
@@ -191,7 +194,7 @@ export default function LoginPage() {
           <form onSubmit={handleEmailAuth} className="space-y-4">
             {isSignUp && (
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]/80">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
                   Full Name
                 </label>
                 <input
@@ -200,13 +203,13 @@ export default function LoginPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Aarohi Sharma"
-                  className="mt-1.5 w-full rounded-xl border border-[#E8DFC8] bg-white px-4 py-3 text-sm text-[#231C18] outline-none transition focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/20"
+                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
                 />
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]/80">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
                 Email Address
               </label>
               <input
@@ -215,12 +218,12 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="mt-1.5 w-full rounded-xl border border-[#E8DFC8] bg-white px-4 py-3 text-sm text-[#231C18] outline-none transition focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/20"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]/80">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
                 Password
               </label>
               <input
@@ -230,14 +233,14 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="mt-1.5 w-full rounded-xl border border-[#E8DFC8] bg-white px-4 py-3 text-sm text-[#231C18] outline-none transition focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/20"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#B85B3A] px-6 py-3.5 text-sm font-semibold text-[#FBF8F3] transition hover:bg-[#B85B3A]/90 disabled:opacity-60"
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-[#B85B3A] px-6 py-3.5 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#B85B3A]/90 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60"
             >
               {loading && <Loader2 className="size-4 animate-spin" />}
               {isSignUp ? "Create Account" : "Sign in"}
@@ -246,8 +249,8 @@ export default function LoginPage() {
 
           {/* Divider */}
           <div className="relative flex items-center justify-center py-2">
-            <div className="w-full border-t border-[#E8DFC8]" />
-            <span className="absolute bg-[#FBF8F3] px-3 text-xs uppercase tracking-wider text-[#231C18]/50 font-medium">
+            <div className="w-full border-t border-[rgba(212,163,115,0.3)]" />
+            <span className="absolute bg-[#FAF7F2] px-3 text-xs uppercase tracking-wider text-[#6B5E55] font-semibold">
               OR
             </span>
           </div>
@@ -256,7 +259,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-[#E8DFC8] bg-white px-6 py-3 text-sm font-medium text-[#231C18] transition hover:bg-[#E8DFC8]/20"
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-6 py-3 text-sm font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15 hover:scale-[1.01]"
           >
             <svg className="size-5" viewBox="0 0 24 24" aria-hidden>
               <path
@@ -284,7 +287,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setIsSignUp((prev) => !prev)}
-              className="text-sm font-medium text-[#231C18]/80 hover:text-[#B85B3A] transition-colors"
+              className="text-sm font-semibold text-[#231C18] hover:text-[#B85B3A] transition-colors"
             >
               {isSignUp
                 ? "Already have an account? Sign in"

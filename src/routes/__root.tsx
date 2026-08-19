@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
       },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
     ],
@@ -154,7 +154,7 @@ function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[#E8DFC8] bg-[#FBF8F3]/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-[rgba(212,163,115,0.25)] bg-[#FAF7F2]/85 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
         <div className="flex items-center gap-8">
           <Link to="/" aria-label="The Little Box Home">
@@ -208,14 +208,14 @@ function SiteHeader() {
           </Link>
 
           {user ? (
-            <div className="flex items-center gap-2 pl-1 border-l border-[#E8DFC8]">
+            <div className="flex items-center gap-2 pl-1 border-l border-[rgba(212,163,115,0.25)]">
               <span className="hidden text-xs text-[#231C18]/80 lg:inline-block max-w-[140px] truncate font-normal" title={user.email}>
                 {user.email}
               </span>
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="rounded-full border border-[#E8DFC8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#231C18] transition hover:bg-[#E8DFC8]/30"
+                className="rounded-full border border-[rgba(212,163,115,0.3)] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
               >
                 Sign Out
               </button>
@@ -231,7 +231,7 @@ function SiteHeader() {
 
           <Link
             to="/build"
-            className="rounded-full bg-[#B85B3A] px-4 py-2 text-xs font-semibold text-[#FBF8F3] transition hover:bg-[#B85B3A]/90 sm:text-sm"
+            className="rounded-full bg-[#B85B3A] px-4 py-2 text-xs font-semibold text-[#FAF7F2] shadow-sm transition hover:bg-[#B85B3A]/90 hover:shadow-md sm:text-sm"
           >
             Build a box
           </Link>
@@ -239,7 +239,7 @@ function SiteHeader() {
       </nav>
 
       {/* Mobile sub-navigation bar */}
-      <div className="flex items-center justify-around border-t border-[#E8DFC8]/60 bg-[#FBF8F3] py-2 text-xs font-medium md:hidden">
+      <div className="flex items-center justify-around border-t border-[rgba(212,163,115,0.2)] bg-[#FAF7F2]/90 backdrop-blur-lg py-2 text-xs font-medium md:hidden">
         <Link to="/" hash="how-it-works" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
           How it works
         </Link>
@@ -263,13 +263,13 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <BuilderProvider>
-        <div className="relative flex min-h-screen flex-col bg-[#FAF7F2] text-[#231C18] selection:bg-[#E4A090]/30 overflow-x-hidden">
+        <div className="relative flex min-h-screen flex-col bg-[#FAF7F2] text-[#231C18] selection:bg-[#D4A373]/30 overflow-x-hidden">
           {/* ── Fixed Ambient Glow Radial Gradients ── */}
           <div
             className="fixed -top-32 -right-32 size-[450px] rounded-full pointer-events-none z-0"
             style={{
               background:
-                "radial-gradient(circle, rgba(184, 91, 58, 0.08) 0%, transparent 60%)",
+                "radial-gradient(circle, rgba(184, 91, 58, 0.09) 0%, transparent 65%)",
             }}
             aria-hidden
           />
@@ -277,7 +277,7 @@ function RootComponent() {
             className="fixed top-[40%] -left-36 size-[550px] rounded-full pointer-events-none z-0"
             style={{
               background:
-                "radial-gradient(circle, rgba(217, 155, 110, 0.07) 0%, transparent 60%)",
+                "radial-gradient(circle, rgba(212, 163, 115, 0.08) 0%, transparent 65%)",
             }}
             aria-hidden
           />
@@ -285,7 +285,7 @@ function RootComponent() {
             className="fixed -bottom-32 -right-24 size-[400px] rounded-full pointer-events-none z-0"
             style={{
               background:
-                "radial-gradient(circle, rgba(184, 91, 58, 0.05) 0%, transparent 60%)",
+                "radial-gradient(circle, rgba(112, 130, 56, 0.07) 0%, transparent 65%)",
             }}
             aria-hidden
           />
@@ -302,7 +302,7 @@ function RootComponent() {
             <path d="M50 10 C50 35 15 50 10 50 C35 50 50 85 50 90 C50 65 85 50 90 50 C65 50 50 15 50 10 Z" />
           </svg>
           <svg
-            className="fixed bottom-36 left-8 size-40 pointer-events-none z-0 opacity-15 text-[#6E7E65]"
+            className="fixed bottom-36 left-8 size-40 pointer-events-none z-0 opacity-15 text-[#708238]"
             viewBox="0 0 100 100"
             fill="none"
             stroke="currentColor"

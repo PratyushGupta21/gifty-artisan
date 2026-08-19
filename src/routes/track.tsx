@@ -78,76 +78,94 @@ export default function TrackPage() {
     : 0;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-3xl font-bold text-[#231C18]">Track your box</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-        Paste the order ID (e.g. <span className="font-mono font-semibold text-[#B85B3A]">TLB-8F4A2C</span>) from your confirmation screen.
-      </p>
+    <div className="mx-auto max-w-2xl px-4 py-12 md:py-16 space-y-8">
+      {/* Editorial Header */}
+      <div className="space-y-2 text-left">
+        <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
+          Studio Fulfilment Tracker
+        </span>
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+          Track your box
+        </h1>
+        <p className="text-sm text-[#6B5E55]">
+          Paste the order ID (e.g. <span className="font-mono font-semibold text-[#B85B3A]">TLB-8F4A2C</span>) from your confirmation screen or dashboard.
+        </p>
+      </div>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          void lookup();
-        }}
-        className="mt-6 flex gap-2"
-      >
-        <label className="sr-only" htmlFor="order-id">
-          Order ID
-        </label>
-        <input
-          id="order-id"
-          value={orderId}
-          onChange={(e) => setOrderId(e.target.value)}
-          placeholder="e.g. TLB-8F4A2C"
-          className="w-full rounded-xl border border-[#E8DFC8] bg-card px-4 py-3 text-sm outline-none transition focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/20"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="rounded-full bg-[#B85B3A] px-6 py-3 text-sm font-semibold text-[#FBF8F3] transition hover:bg-[#B85B3A]/90 disabled:opacity-60"
+      {/* Lookup Card */}
+      <div className="paper-card p-6 md:p-8">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            void lookup();
+          }}
+          className="flex flex-col sm:flex-row gap-3"
         >
-          {loading ? "Searching..." : "Track"}
-        </button>
-      </form>
+          <label className="sr-only" htmlFor="order-id">
+            Order ID
+          </label>
+          <input
+            id="order-id"
+            value={orderId}
+            onChange={(e) => setOrderId(e.target.value)}
+            placeholder="e.g. TLB-8F4A2C"
+            className="w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="rounded-full bg-[#B85B3A] px-7 py-3 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#B85B3A]/90 hover:scale-[1.02] disabled:opacity-60 shrink-0"
+          >
+            {loading ? "Searching..." : "Track Order"}
+          </button>
+        </form>
 
-      {message && <p className="mt-4 text-sm text-muted-foreground">{message}</p>}
+        {message && <p className="mt-4 text-sm text-[#B91C18] font-medium">{message}</p>}
+      </div>
 
       {order && (
-        <div className="paper-card mt-8 p-6 space-y-6">
-          <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-border/50 pb-4">
+        <div className="paper-card paper-card-hover p-6 md:p-8 space-y-6">
+          <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[rgba(212,163,115,0.25)] pb-5">
             <div>
-              <span className="inline-block rounded-md bg-[#B85B3A]/10 px-2.5 py-1 font-mono text-xs font-bold text-[#B85B3A]">
-                #{shortOrderId(String(order["id"]))}
+              <span className="inline-block rounded-lg border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3 py-1 font-mono text-xs font-bold text-[#B85B3A]">
+                #TLB-{shortOrderId(String(order["id"]))}
               </span>
-              <h2 className="mt-2 text-xl font-bold text-[#231C18]">
+              <h2 className="mt-2.5 font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
                 {String(order["tier_selected"])} box for {String(order["recipient_name"])}
               </h2>
             </div>
-            <span className="text-lg font-bold text-[#B85B3A]">
+            <span className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#B85B3A]">
               {inr(Number(order["total_amount"]))}
             </span>
           </div>
 
-          <ol className="space-y-4">
-            {STAGES.map((stage, i) => (
-              <li key={stage.id} className="flex items-center gap-3">
-                <span
-                  className={cn(
-                    "size-3.5 rounded-full transition-colors",
-                    i <= currentIndex ? "bg-[#B85B3A]" : "bg-border",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "text-sm font-medium",
-                    i <= currentIndex ? "text-[#231C18]" : "text-muted-foreground",
-                  )}
-                >
-                  {stage.label}
-                </span>
-              </li>
-            ))}
-          </ol>
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase tracking-wider text-[#6B5E55] font-bold">
+              Crafting Stage Timeline
+            </h3>
+            <ol className="space-y-4">
+              {STAGES.map((stage, i) => (
+                <li key={stage.id} className="flex items-center gap-3.5">
+                  <span
+                    className={cn(
+                      "size-4 rounded-full transition-all duration-300 flex items-center justify-center text-[9px] font-bold text-white",
+                      i <= currentIndex ? "bg-[#B85B3A] shadow-sm shadow-[#B85B3A]/40 scale-110" : "bg-[rgba(212,163,115,0.3)]",
+                    )}
+                  >
+                    {i <= currentIndex ? "✓" : ""}
+                  </span>
+                  <span
+                    className={cn(
+                      "text-sm font-semibold transition-colors",
+                      i <= currentIndex ? "text-[#231C18]" : "text-[#6B5E55]/60",
+                    )}
+                  >
+                    {stage.label}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       )}
     </div>
