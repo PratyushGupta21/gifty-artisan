@@ -47,7 +47,7 @@ export const Route = createFileRoute("/build")({
 const STEPS = ["Recipient", "Memories", "Choose tier", "Review & order"];
 
 const inputClass =
-  "w-full rounded-xl border border-[rgba(24,19,16,0.25)] bg-[#FDFBF7] px-4 py-3 text-sm text-[#181310] placeholder:text-[#6B5E55]/60 outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/25 focus:shadow-[0_0_15px_rgba(184,91,58,0.15)]";
+  "w-full rounded-xl border border-[rgba(24,19,16,0.25)] bg-[#FAF7F2] px-4 py-3 text-sm font-medium text-[#1C1612] placeholder:text-[#5C4A3E] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/25 focus:shadow-[0_0_15px_rgba(184,91,58,0.15)]";
 
 function BuildPage() {
   const search = Route.useSearch();
@@ -447,7 +447,7 @@ function BuildPage() {
                             : "Enter a valid 6-digit pincode",
                         )
                       }
-                      className="rounded-full border border-[rgba(212,163,115,0.4)] bg-[#CFA771] px-5 py-3 text-sm font-semibold text-[#1C1612] hover:bg-[#B58A52] transition"
+                      className="rounded-full border border-[#8C6D4F]/30 bg-[#FAF7F2]/50 px-5 py-3 text-sm font-semibold text-[#1C1612] hover:bg-[#FAF7F2] transition"
                     >
                       Check delivery
                     </button>
@@ -482,7 +482,7 @@ function BuildPage() {
                   type="button"
                   onClick={() => setStep((s) => Math.max(0, s - 1))}
                   disabled={step === 0}
-                  className="rounded-full border border-[rgba(212,163,115,0.3)] bg-[#CFA771] px-6 py-2.5 text-sm font-medium text-[#1C1612] transition hover:bg-[#E0BC88] disabled:opacity-40"
+                  className="rounded-full border border-[#8C6D4F]/30 bg-[#FAF7F2]/50 px-6 py-2.5 text-sm font-semibold text-[#1C1612] transition hover:bg-[#FAF7F2] disabled:opacity-40"
                 >
                   Back
                 </button>

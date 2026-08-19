@@ -75,22 +75,22 @@ export function PhotoUploader({
           void upload(e.dataTransfer.files);
         }}
         className={cn(
-          "paper-card flex flex-col items-center justify-center gap-3 p-8 text-center transition-colors",
-          dragging && "border-accent bg-accent/20",
+          "flex flex-col items-center justify-center gap-3.5 p-8 text-center rounded-2xl border-2 border-dashed border-[#8C6D4F] bg-[#FAF7F2]/40 backdrop-blur-sm transition-all duration-200",
+          dragging && "border-[#C86240] bg-[#FAF7F2]/70 scale-[1.01]",
         )}
       >
         {busy ? (
-          <Loader2 className="size-6 animate-spin text-primary" aria-hidden />
+          <Loader2 className="size-7 animate-spin text-[#C86240]" aria-hidden />
         ) : (
-          <ImagePlus className="size-6 text-primary" aria-hidden />
+          <ImagePlus className="size-7 text-[#C86240]" aria-hidden />
         )}
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm font-semibold text-[#1C1612]">
           Drag photos here, or pick them from your device
         </p>
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="rounded-full border border-border bg-background px-4 py-2 text-sm font-medium hover:border-accent"
+          className="rounded-full bg-[#1C1612] px-5 py-2 text-sm font-semibold text-[#FAF7F2] shadow-md transition hover:bg-[#1C1612]/90 hover:scale-[1.02]"
         >
           Choose photos
         </button>
