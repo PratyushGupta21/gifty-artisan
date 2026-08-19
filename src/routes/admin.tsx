@@ -224,7 +224,7 @@ export default function AdminPage() {
                 </p>
 
                 {Boolean(o["card_message"]) && (
-                  <p className="rounded-xl bg-[#FDFBF7] border border-[rgba(24,19,16,0.15)] p-4 text-sm italic text-[#181310]">
+                  <p className="rounded-xl bg-[#FAF9F6] border border-[rgba(24,19,16,0.15)] p-4 text-sm italic font-medium text-[#1C1612]">
                     “{String(o["card_message"])}”
                   </p>
                 )}
