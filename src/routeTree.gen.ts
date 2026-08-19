@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as BuildRouteImport } from './routes/build'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrackRouteImport } from './routes/track'
@@ -44,6 +45,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/build': typeof BuildRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/build': typeof BuildRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/build': typeof BuildRoute
   '/faq': typeof FaqRoute
+  '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/track': typeof TrackRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/build'
     | '/faq'
+    | '/login'
     | '/privacy'
     | '/terms'
     | '/track'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/build'
     | '/faq'
+    | '/login'
     | '/privacy'
     | '/terms'
     | '/track'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/build'
     | '/faq'
+    | '/login'
     | '/privacy'
     | '/terms'
     | '/track'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   BuildRoute: typeof BuildRoute
   FaqRoute: typeof FaqRoute
+  LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   TrackRoute: typeof TrackRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   BuildRoute: BuildRoute,
   FaqRoute: FaqRoute,
+  LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   TrackRoute: TrackRoute,

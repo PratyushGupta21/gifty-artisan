@@ -22,5 +22,5 @@ export const MEMORY_BUCKET = "gift-memories";
 export const isSupabaseConfigured = Boolean(url && anonKey);
 
 export const supabase = createClient(url ?? "", anonKey ?? "", {
-  auth: { persistSession: false, autoRefreshToken: false },
+  auth: { persistSession: true, autoRefreshToken: true },
 });

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Loader2, Truck } from "lucide-react";
@@ -7,7 +7,7 @@ import { z } from "zod";
 import { Chip } from "@/components/craft/Chip";
 import { PhotoUploader } from "@/components/craft/PhotoUploader";
 import { useBuilder } from "@/lib/builder-store";
-import { supabase } from "@/lib/supabase";
+import { isSupabaseConfigured, supabase } from "@/lib/supabase";
 import {
   ADD_ONS,
   OCCASIONS,
@@ -56,6 +56,23 @@ function BuildPage() {
   const [step, setStep] = useState(search.tier ? 2 : 0);
   const [submitting, setSubmitting] = useState(false);
   const [pinResult, setPinResult] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function checkAuth() {
+      if (!isSupabaseConfigured) return;
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session) {
+        toast.error("Please sign in or create an account to start building your gift box.");
+        void navigate({ to: "/login", search: { redirect: "/build" } });
+      } else {
+        setUserId(session.user.id);
+      }
+    }
+    void checkAuth();
+  }, [navigate]);
 
   const tier = state.tier ?? search.tier ?? null;
   const totals = useMemo(() => priceBreakdown(tier, state.addOns), [tier, state.addOns]);
@@ -81,9 +98,15 @@ function BuildPage() {
     if (!tier) return;
     setSubmitting(true);
     try {
+      const activeSession = isSupabaseConfigured
+        ? (await supabase.auth.getSession()).data.session
+        : null;
+      const activeUserId = activeSession?.user?.id ?? userId;
+
       const { data: order, error: orderError } = await supabase
         .from("orders")
         .insert({
+          ...(activeUserId ? { user_id: activeUserId } : {}),
           recipient_name: state.recipientName,
           relationship: state.relationship,
           occasion: state.occasion,
