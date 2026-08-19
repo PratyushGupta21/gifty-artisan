@@ -165,10 +165,10 @@ function BuildPage() {
         <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
           Step-by-Step Artisan Builder
         </span>
-        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
           Build their gift box
         </h1>
-        <p className="text-sm text-[#6B5E55]">
+        <p className="text-sm text-[#D4A373]">
           Four short steps. Your answers update your live box summary in real time.
         </p>
       </div>
@@ -185,8 +185,8 @@ function BuildPage() {
                 i === step
                   ? "border-[#B85B3A] bg-[#B85B3A] text-[#FAF7F2] shadow-md scale-[1.02]"
                   : i < step
-                    ? "border-[#708238]/40 bg-[#708238]/15 text-[#231C18]"
-                    : "border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.85)] text-[#6B5E55] hover:border-[#D4A373]",
+                    ? "border-[#708238]/60 bg-[#708238]/20 text-[#FAF7F2]"
+                    : "border-[rgba(24,19,16,0.3)] bg-[#CFA771] text-[#181310] font-bold hover:bg-[#E0BC88]",
               )}
             >
               {i + 1}. {label}

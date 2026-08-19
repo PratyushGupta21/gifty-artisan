@@ -22,10 +22,10 @@ export default function PrivacyPage() {
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3.5 py-1 text-xs font-semibold text-[#B85B3A]">
           <ShieldCheck className="size-3.5" /> Media Safety & Data Policy
         </span>
-        <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[#FAF7F2] md:text-4xl">
           Privacy & Media Safety Policy
         </h1>
-        <p className="text-base text-muted-foreground">
+        <p className="text-base text-[#D4A373]">
           How we handle your personal details, uploaded photos, and private memory links with care.
         </p>
       </div>

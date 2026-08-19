@@ -242,9 +242,9 @@ export default function Home() {
               key={r.name}
               className="paper-card paper-card-hover w-[290px] shrink-0 snap-start p-7 sm:w-[350px]"
             >
-              <div className="flex gap-1 text-[#D4A373]" aria-label="5 out of 5 stars">
+              <div className="flex gap-1 text-amber-500 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" aria-hidden />
+                  <Star key={i} className="size-4 fill-amber-400 text-amber-600 stroke-[1.5]" aria-hidden />
                 ))}
               </div>
               <p className="mt-4 text-sm leading-relaxed text-[#231C18] italic">“{r.text}”</p>
