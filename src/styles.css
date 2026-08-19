@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
@@ -9,13 +9,6 @@
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
  * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
  */
 
 @theme inline {
@@ -51,64 +44,38 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root,
 .dark {
   --radius: 1rem;
-  /* Warm linen / pressed paper #FBF8F3 */
-  --background: oklch(0.98 0.007 85);
+  /* Soft handmade paper cream #FAF7F2 */
+  --background: #FAF7F2;
   /* Deep espresso ink #231C18 */
-  --foreground: oklch(0.221 0.013 48);
-  /* Kraft paper / sand tint #F2EAE1 */
-  --card: oklch(0.937 0.014 71);
-  --card-foreground: oklch(0.221 0.013 48);
-  --popover: oklch(0.98 0.007 85);
-  --popover-foreground: oklch(0.221 0.013 48);
+  --foreground: #231C18;
+  /* Translucent frosted glass card */
+  --card: rgba(255, 255, 255, 0.78);
+  --card-foreground: #231C18;
+  --popover: #FAF7F2;
+  --popover-foreground: #231C18;
   /* Warm terracotta #B85B3A */
-  --primary: oklch(0.556 0.121 40);
-  --primary-foreground: oklch(0.98 0.007 85);
+  --primary: #B85B3A;
+  --primary-foreground: #FAF7F2;
   /* Dried eucalyptus #6E7E65 */
-  --secondary: oklch(0.556 0.033 137);
-  --secondary-foreground: oklch(0.98 0.007 85);
-  --muted: oklch(0.937 0.014 71);
+  --secondary: #6E7E65;
+  --secondary-foreground: #FAF7F2;
+  --muted: #F2EAE1;
   /* Warm slate ink #6B5E55 */
-  --muted-foreground: oklch(0.451 0.019 55);
+  --muted-foreground: #6B5E55;
   /* Pressed rose #E4A090 */
-  --accent: oklch(0.775 0.077 32);
-  --accent-foreground: oklch(0.221 0.013 48);
-  --destructive: oklch(0.52 0.17 27);
-  --destructive-foreground: oklch(0.98 0.007 85);
-  /* Borders #E8DED3 */
-  --border: oklch(0.9 0.016 74);
-  --input: oklch(0.9 0.016 74);
-  --ring: oklch(0.775 0.077 32);
-  --chart-1: oklch(0.556 0.121 40);
-  --chart-2: oklch(0.556 0.033 137);
-  --chart-3: oklch(0.775 0.077 32);
-  --chart-4: oklch(0.9 0.016 74);
-  --chart-5: oklch(0.451 0.019 55);
-  --sidebar: oklch(0.937 0.014 71);
-  --sidebar-foreground: oklch(0.221 0.013 48);
-  --sidebar-primary: oklch(0.556 0.121 40);
-  --sidebar-primary-foreground: oklch(0.98 0.007 85);
-  --sidebar-accent: oklch(0.775 0.077 32);
-  --sidebar-accent-foreground: oklch(0.221 0.013 48);
-  --sidebar-border: oklch(0.9 0.016 74);
-  --sidebar-ring: oklch(0.775 0.077 32);
+  --accent: #E4A090;
+  --accent-foreground: #231C18;
+  --destructive: #B91C1C;
+  --destructive-foreground: #FAF7F2;
+  /* Subtle terracotta border */
+  --border: rgba(184, 91, 58, 0.14);
+  --input: rgba(184, 91, 58, 0.18);
+  --ring: #E4A090;
 }
 
 @layer base {
@@ -117,14 +84,13 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background-color: #FAF7F2;
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    background-image: radial-gradient(
-        oklch(0.9 0.016 74 / 0.55) 1px,
-        transparent 1px
-      );
-    background-size: 22px 22px;
+    /* Soft warm brown dot grid overlay (~0.15 opacity look) */
+    background-image: radial-gradient(rgba(35, 28, 24, 0.07) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    min-height: 100vh;
   }
 
   h1,
@@ -137,10 +103,21 @@
   }
 }
 
-@utility paper-card {
-  background-color: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-2xl);
-  box-shadow: var(--shadow-paper);
-}
+/* Glassmorphism Refinement for Cards */
+@layer utilities {
+  .paper-card {
+    background-color: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(184, 91, 58, 0.14);
+    border-radius: var(--radius-2xl);
+    box-shadow: 0 4px 20px -2px rgba(35, 28, 24, 0.04);
+    transition: all 0.25s ease-in-out;
+  }
 
+  .paper-card-hover:hover {
+    box-shadow: 0 12px 28px -4px rgba(35, 28, 24, 0.08);
+    border-color: rgba(184, 91, 58, 0.28);
+    transform: translateY(-2px);
+  }
+}

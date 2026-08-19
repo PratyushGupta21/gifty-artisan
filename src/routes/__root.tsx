@@ -263,16 +263,68 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <BuilderProvider>
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          <main className="flex-1">
-            <Outlet />
-          </main>
-          <Footer />
+        <div className="relative flex min-h-screen flex-col bg-[#FAF7F2] text-[#231C18] selection:bg-[#E4A090]/30 overflow-x-hidden">
+          {/* ── Fixed Ambient Glow Radial Gradients ── */}
+          <div
+            className="fixed -top-32 -right-32 size-[450px] rounded-full pointer-events-none z-0"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(184, 91, 58, 0.08) 0%, transparent 60%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="fixed top-[40%] -left-36 size-[550px] rounded-full pointer-events-none z-0"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(217, 155, 110, 0.07) 0%, transparent 60%)",
+            }}
+            aria-hidden
+          />
+          <div
+            className="fixed -bottom-32 -right-24 size-[400px] rounded-full pointer-events-none z-0"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(184, 91, 58, 0.05) 0%, transparent 60%)",
+            }}
+            aria-hidden
+          />
+
+          {/* ── Ambient Floating Artisan Vector Accents ── */}
+          <svg
+            className="fixed top-28 right-6 size-32 pointer-events-none z-0 opacity-15 text-[#B85B3A]"
+            viewBox="0 0 100 100"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            aria-hidden
+          >
+            <path d="M50 10 C50 35 15 50 10 50 C35 50 50 85 50 90 C50 65 85 50 90 50 C65 50 50 15 50 10 Z" />
+          </svg>
+          <svg
+            className="fixed bottom-36 left-8 size-40 pointer-events-none z-0 opacity-15 text-[#6E7E65]"
+            viewBox="0 0 100 100"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            aria-hidden
+          >
+            <path d="M20 80 Q 50 20 80 80" />
+            <path d="M35 50 Q 50 30 65 50" />
+            <circle cx="50" cy="25" r="3" fill="currentColor" />
+          </svg>
+
+          {/* ── Main App Content ── */}
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <SiteHeader />
+            <main className="flex-1">
+              <Outlet />
+            </main>
+            <Footer />
+          </div>
         </div>
         <Toaster />
       </BuilderProvider>
     </QueryClientProvider>
   );
 }
-
