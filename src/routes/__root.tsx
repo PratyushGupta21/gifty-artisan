@@ -4,14 +4,17 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useNavigate,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-import { Toaster } from "@/components/ui/sonner";
+import { useEffect, useState, type ReactNode } from "react";
+import { Toaster, toast } from "sonner";
+import type { User } from "@supabase/supabase-js";
 import { BuilderProvider } from "@/lib/builder-store";
 import { BrandLogo } from "@/components/craft/BrandLogo";
 import { Footer } from "@/components/layout/Footer";
+import { isSupabaseConfigured, supabase } from "@/lib/supabase";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -122,6 +125,34 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function SiteHeader() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured) return;
+
+    void supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
+
+  const handleSignOut = async () => {
+    if (isSupabaseConfigured) {
+      await supabase.auth.signOut();
+    }
+    setUser(null);
+    toast.success("Signed out successfully");
+    void navigate({ to: "/login" });
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-[#E8DFC8] bg-[#FBF8F3]/90 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
@@ -162,7 +193,7 @@ function SiteHeader() {
         </div>
 
         {/* Right Action Items */}
-        <div className="flex items-center gap-4 text-sm font-medium">
+        <div className="flex items-center gap-3.5 text-sm font-medium">
           <Link
             to="/admin"
             className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
@@ -175,9 +206,32 @@ function SiteHeader() {
           >
             Track order
           </Link>
+
+          {user ? (
+            <div className="flex items-center gap-2 pl-1 border-l border-[#E8DFC8]">
+              <span className="hidden text-xs text-[#231C18]/80 lg:inline-block max-w-[140px] truncate font-normal" title={user.email}>
+                {user.email}
+              </span>
+              <button
+                type="button"
+                onClick={handleSignOut}
+                className="rounded-full border border-[#E8DFC8] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#231C18] transition hover:bg-[#E8DFC8]/30"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="rounded-full border border-[#B85B3A] px-3.5 py-1.5 text-xs font-semibold text-[#B85B3A] transition hover:bg-[#B85B3A]/10"
+            >
+              Sign In
+            </Link>
+          )}
+
           <Link
             to="/build"
-            className="rounded-full bg-[#B85B3A] px-4 py-2 font-medium text-[#FBF8F3] transition-colors hover:bg-[#B85B3A]/90"
+            className="rounded-full bg-[#B85B3A] px-4 py-2 text-xs font-semibold text-[#FBF8F3] transition hover:bg-[#B85B3A]/90 sm:text-sm"
           >
             Build a box
           </Link>

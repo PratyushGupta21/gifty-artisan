@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { supabase } from "@/lib/supabase";
+import { shortOrderId } from "@/lib/utils";
 
 export const Route = createFileRoute("/memory/$id")({
   head: () => ({
@@ -59,12 +60,10 @@ function Typewriter({ text }: { text: string }) {
   );
 }
 
-/** Skeleton placeholder shown while the memory data loads. */
 function MemorySkeleton() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       <div className="flex flex-col items-center gap-6">
-        {/* Envelope skeleton */}
         <div className="paper-card flex flex-col items-center gap-4 px-10 py-14 animate-pulse">
           <div className="size-10 rounded-full bg-muted" />
           <div className="h-7 w-48 rounded-lg bg-muted" />
@@ -75,7 +74,7 @@ function MemorySkeleton() {
   );
 }
 
-function MemoryPage() {
+export default function MemoryPage() {
   const { id } = Route.useParams();
   const [opened, setOpened] = useState(false);
 
@@ -103,7 +102,7 @@ function MemoryPage() {
   if (error || !data) {
     return (
       <div className="p-16 text-center">
-        <h1 className="text-2xl">This memory page isn't available</h1>
+        <h1 className="text-2xl font-bold text-[#231C18]">This memory page isn't available</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           The link may be mistyped or the box hasn't shipped yet.
         </p>
@@ -140,7 +139,24 @@ function MemoryPage() {
       animate={{ opacity: 1, y: 0 }}
       className="mx-auto max-w-3xl px-4 py-12"
     >
-      <h1 className="text-3xl">
+      {memory.order_id && (
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-5 py-3.5 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-[#231C18]">Order Confirmation:</span>
+            <span className="font-mono font-bold text-[#B85B3A]">
+              #{shortOrderId(memory.order_id as string)}
+            </span>
+          </div>
+          <Link
+            to="/track"
+            className="text-xs font-semibold text-[#B85B3A] underline underline-offset-2 hover:text-[#B85B3A]/80 transition-colors"
+          >
+            Track Order Status →
+          </Link>
+        </div>
+      )}
+
+      <h1 className="text-3xl font-bold text-[#231C18]">
         A special memory box created for {memory.recipient_name}
         {memory.sender_name ? ` by ${memory.sender_name}` : ""}
       </h1>
@@ -171,7 +187,7 @@ function MemoryPage() {
 
       {memory.letter_text && (
         <div className="paper-card mt-8 p-6 md:p-10">
-          <Typewriter text={memory.letter_text} />
+          <Typewriter text={memory.letter_text as string} />
         </div>
       )}
     </motion.div>
