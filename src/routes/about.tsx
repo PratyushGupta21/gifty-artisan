@@ -1,12 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Heart, Sparkles, Package, ArrowRight } from "lucide-react";
+import creatorImg from "@/assets/creator.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — The Little Box" },
+      { title: "About Us — The Story Behind The Little Box" },
       {
         name: "description",
-        content: "Learn about our mission to craft person-first, artisan gift boxes with digital memory integration.",
+        content: "Moving past generic off-the-shelf gifts to craft physical-meets-digital keepsakes that tell real stories.",
       },
     ],
   }),
@@ -15,35 +17,97 @@ export const Route = createFileRoute("/about")({
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16">
-      <h1 className="text-4xl font-bold text-[#231C18]">About The Little Box</h1>
-      <p className="mt-4 text-lg text-[#231C18]/80 leading-relaxed">
-        We believe that every gift should tell a unique story. Instead of generic off-the-shelf presents,
-        we craft personalized, person-first gift boxes filled with photo cards, artisan keepsakes, and digital memory pages.
-      </p>
-      
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        <div className="paper-card p-6">
-          <h2 className="text-xl font-semibold text-[#231C18]">Handcrafted Care</h2>
-          <p className="mt-2 text-sm text-[#231C18]/70">
-            Every item in our boxes is handcrafted by verified independent micro-creators and artisans across India.
-          </p>
-        </div>
-        <div className="paper-card p-6">
-          <h2 className="text-xl font-semibold text-[#231C18]">Digital Keepsakes</h2>
-          <p className="mt-2 text-sm text-[#231C18]/70">
-            With built-in QR memory pages, your recipient can scan and listen to custom playlists, view photo letters, or watch video notes.
+    <div className="mx-auto max-w-4xl px-4 py-12 md:py-16 space-y-12">
+      {/* Header */}
+      <div className="space-y-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3.5 py-1 text-xs font-semibold text-[#B85B3A]">
+          <Heart className="size-3.5" /> Person-First Craftsmanship
+        </span>
+        <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[#231C18] md:text-4xl">
+          The Story Behind The Little Box
+        </h1>
+        <p className="text-base text-muted-foreground md:text-lg">
+          Moving past generic off-the-shelf gifts to craft physical-meets-digital keepsakes that tell real stories.
+        </p>
+      </div>
+
+      {/* Why We Started Card */}
+      <section className="paper-card p-6 md:p-8 space-y-4">
+        <h2 className="text-2xl font-bold text-[#231C18]">Why We Started</h2>
+        <p className="text-sm leading-relaxed text-[#231C18]/80 md:text-base">
+          Gift-giving should feel like a warm embrace, not a last-minute chore. Most store-bought gift hampers feel impersonal—filled with mass-produced clutter that gets forgotten in a drawer. We built The Little Box to combine physical artisan craftsmanship with digital storytelling, creating personal gift boxes centered around your recipient's personality.
+        </p>
+      </section>
+
+      {/* How We Work Image Banner */}
+      <div className="paper-card overflow-hidden grid md:grid-cols-2 items-center">
+        <img
+          src={creatorImg}
+          alt="Artisan tying twine around a kraft paper gift box"
+          className="h-full w-full object-cover min-h-[240px]"
+        />
+        <div className="p-6 md:p-8 space-y-3">
+          <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-semibold">
+            Handcrafted with Care
+          </span>
+          <h2 className="text-2xl font-bold text-[#231C18]">Made by hands, not warehouses</h2>
+          <p className="text-sm text-[#231C18]/80 leading-relaxed">
+            Every keepsake inside a box is made by an independent maker we know by name, paid fairly and credited inside the box. When you gift, two stories get told.
           </p>
         </div>
       </div>
 
-      <div className="mt-12">
-        <Link
-          to="/build"
-          className="inline-flex rounded-full bg-[#B85B3A] px-6 py-3 text-sm font-semibold text-[#FBF8F3] hover:bg-[#B85B3A]/90 transition-colors"
-        >
-          Build a Box Today
-        </Link>
+      {/* How We Work Cards */}
+      <div className="space-y-4">
+        <h2 className="text-2xl font-bold text-[#231C18]">How We Work</h2>
+        
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="paper-card p-6 space-y-3">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[#B85B3A]/10 text-[#B85B3A]">
+              <Heart className="size-5" />
+            </div>
+            <h3 className="text-lg font-bold text-[#231C18]">Independent Micro-Creators</h3>
+            <p className="text-xs leading-relaxed text-[#231C18]/80 md:text-sm">
+              We source handcrafted items, candles, and keepsakes directly from independent artisans across India.
+            </p>
+          </div>
+
+          <div className="paper-card p-6 space-y-3">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[#B85B3A]/10 text-[#B85B3A]">
+              <Sparkles className="size-5" />
+            </div>
+            <h3 className="text-lg font-bold text-[#231C18]">Physical + Digital Fusion</h3>
+            <p className="text-xs leading-relaxed text-[#231C18]/80 md:text-sm">
+              Every box includes high-quality printed photo cards alongside a custom QR memory page featuring audio notes, photo letters, and shared playlists.
+            </p>
+          </div>
+
+          <div className="paper-card p-6 space-y-3">
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[#B85B3A]/10 text-[#B85B3A]">
+              <Package className="size-5" />
+            </div>
+            <h3 className="text-lg font-bold text-[#231C18]">Hand-Packed Precision</h3>
+            <p className="text-xs leading-relaxed text-[#231C18]/80 md:text-sm">
+              Every box is carefully packed in our studio, wrapped in eco-friendly protective packaging, and inspected for quality before shipment.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Box */}
+      <div className="paper-card p-8 text-center space-y-4 bg-[#B85B3A]/5 border-[#B85B3A]/20">
+        <h2 className="text-2xl font-bold text-[#231C18]">Ready to tell their story?</h2>
+        <p className="text-sm text-[#231C18]/80 max-w-md mx-auto">
+          Choose a tier, answer a few questions about your recipient, and we'll craft a box they'll cherish forever.
+        </p>
+        <div>
+          <Link
+            to="/build"
+            className="inline-flex items-center gap-2 rounded-full bg-[#B85B3A] px-6 py-3 text-sm font-semibold text-[#FBF8F3] shadow-paper transition hover:bg-[#B85B3A]/90"
+          >
+            Build a Box Today <ArrowRight className="size-4" />
+          </Link>
+        </div>
       </div>
     </div>
   );
