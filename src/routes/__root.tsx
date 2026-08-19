@@ -215,7 +215,7 @@ function SiteHeader() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="rounded-full border border-[rgba(212,163,115,0.3)] bg-white px-3.5 py-1.5 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
+                className="rounded-full border border-[rgba(212,163,115,0.3)] bg-[#CFA771] px-3.5 py-1.5 text-xs font-semibold text-[#1C1612] transition hover:bg-[#B58A52]"
               >
                 Sign Out
               </button>

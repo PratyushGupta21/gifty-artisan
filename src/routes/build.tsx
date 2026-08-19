@@ -47,7 +47,7 @@ export const Route = createFileRoute("/build")({
 const STEPS = ["Recipient", "Memories", "Choose tier", "Review & order"];
 
 const inputClass =
-  "w-full rounded-xl border border-[rgba(212,163,115,0.3)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]";
+  "w-full rounded-xl border border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]";
 
 function BuildPage() {
   const search = Route.useSearch();
@@ -186,7 +186,7 @@ function BuildPage() {
                   ? "border-[#B85B3A] bg-[#B85B3A] text-[#FAF7F2] shadow-md scale-[1.02]"
                   : i < step
                     ? "border-[#708238]/40 bg-[#708238]/15 text-[#231C18]"
-                    : "border-[rgba(212,163,115,0.3)] bg-white/80 text-[#6B5E55] hover:border-[#D4A373]",
+                    : "border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.85)] text-[#6B5E55] hover:border-[#D4A373]",
               )}
             >
               {i + 1}. {label}
@@ -332,7 +332,7 @@ function BuildPage() {
                           "rounded-2xl border p-5 text-left transition-all duration-200 hover:scale-[1.01]",
                           tier === t.id
                             ? "border-[#B85B3A] bg-[#D4A373]/15 ring-2 ring-[#B85B3A]"
-                            : "border-[rgba(212,163,115,0.3)] bg-white/80 hover:border-[#D4A373]",
+                            : "border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.85)] hover:border-[#D4A373]",
                         )}
                       >
                         <div className="flex items-baseline justify-between gap-3">
@@ -350,7 +350,7 @@ function BuildPage() {
                     {ADD_ONS.map((a) => (
                       <label
                         key={a.id}
-                        className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-[rgba(212,163,115,0.3)] bg-white/80 px-4 py-3 text-sm transition hover:border-[#D4A373]"
+                        className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.85)] px-4 py-3 text-sm transition hover:border-[#D4A373]"
                       >
                         <span className="flex items-center gap-3">
                           <input
@@ -373,7 +373,7 @@ function BuildPage() {
                   <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
                     Review your box
                   </h2>
-                  <div className="rounded-2xl border border-[rgba(212,163,115,0.3)] bg-white/90 p-5">
+                  <div className="rounded-2xl border border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.92)] p-5">
                     <p className="text-sm text-[#6B5E55]">
                       For <strong className="text-[#231C18]">{state.recipientName || "—"}</strong>
                       {state.occasion ? ` · ${state.occasion}` : ""}
@@ -384,7 +384,7 @@ function BuildPage() {
                         {state.photos.slice(0, 8).map((p) => (
                           <li
                             key={p}
-                            className="rounded-lg border border-[rgba(212,163,115,0.3)] bg-white p-2 shadow-sm hover:scale-[1.02] transition"
+                            className="rounded-lg border border-[rgba(212,163,115,0.3)] bg-[#CFA771] p-2 shadow-sm hover:scale-[1.02] transition"
                           >
                             <img
                               src={p}
@@ -447,7 +447,7 @@ function BuildPage() {
                             : "Enter a valid 6-digit pincode",
                         )
                       }
-                      className="rounded-full border border-[rgba(212,163,115,0.4)] bg-white px-5 py-3 text-sm font-semibold text-[#231C18] hover:bg-[#D4A373]/15 transition"
+                      className="rounded-full border border-[rgba(212,163,115,0.4)] bg-[#CFA771] px-5 py-3 text-sm font-semibold text-[#1C1612] hover:bg-[#B58A52] transition"
                     >
                       Check delivery
                     </button>
@@ -482,7 +482,7 @@ function BuildPage() {
                   type="button"
                   onClick={() => setStep((s) => Math.max(0, s - 1))}
                   disabled={step === 0}
-                  className="rounded-full border border-[rgba(212,163,115,0.3)] bg-white px-6 py-2.5 text-sm font-medium text-[#231C18] transition hover:bg-[#FAF7F2] disabled:opacity-40"
+                  className="rounded-full border border-[rgba(212,163,115,0.3)] bg-[#CFA771] px-6 py-2.5 text-sm font-medium text-[#1C1612] transition hover:bg-[#E0BC88] disabled:opacity-40"
                 >
                   Back
                 </button>
@@ -539,7 +539,7 @@ function BuildPage() {
                   <span className="block text-[11px] text-[#FAF7F2]/60 mb-2">Personality Tags</span>
                   <div className="flex flex-wrap gap-1.5">
                     {state.personalityTags.map((t) => (
-                      <span key={t} className="rounded-md bg-white/10 px-2.5 py-1 text-[10px] font-medium text-[#D4A373] border border-white/5">
+                      <span key={t} className="rounded-md bg-[rgba(207,167,113,0.15)] px-2.5 py-1 text-[10px] font-medium text-[#D4A373] border border-[rgba(207,167,113,0.1)]">
                         {t}
                       </span>
                     ))}

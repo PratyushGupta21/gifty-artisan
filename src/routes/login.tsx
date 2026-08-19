@@ -203,7 +203,7 @@ export default function LoginPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Aarohi Sharma"
-                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
                 />
               </div>
             )}
@@ -218,7 +218,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
@@ -233,7 +233,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
@@ -259,7 +259,7 @@ export default function LoginPage() {
           <button
             type="button"
             onClick={handleGoogleSignIn}
-            className="flex w-full items-center justify-center gap-3 rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-6 py-3 text-sm font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15 hover:scale-[1.01]"
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-6 py-3 text-sm font-semibold text-[#1C1612] transition hover:bg-[#B58A52] hover:scale-[1.01]"
           >
             <svg className="size-5" viewBox="0 0 24 24" aria-hidden>
               <path

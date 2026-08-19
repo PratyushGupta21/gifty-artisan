@@ -237,7 +237,7 @@ export default function AdminPage() {
                         void navigator.clipboard.writeText(String(o["card_message"] ?? ""));
                         toast.success("Letter text copied");
                       }}
-                      className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
+                      className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-4 py-2 text-xs font-semibold text-[#1C1612] transition hover:bg-[#B58A52]"
                     >
                       Copy letter
                     </button>
@@ -245,7 +245,7 @@ export default function AdminPage() {
                       <Link
                         to="/memory/$id"
                         params={{ id: slug }}
-                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
+                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-4 py-2 text-xs font-semibold text-[#1C1612] transition hover:bg-[#B58A52]"
                       >
                         Open memory page
                       </Link>
@@ -257,7 +257,7 @@ export default function AdminPage() {
                         )}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-4 py-2 text-xs font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15"
+                        className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-4 py-2 text-xs font-semibold text-[#1C1612] transition hover:bg-[#B58A52]"
                       >
                         Print QR Code
                       </a>
@@ -297,7 +297,7 @@ export default function AdminPage() {
                 type="button"
                 disabled={canceling}
                 onClick={() => setOrderToCancel(null)}
-                className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-5 py-2.5 text-sm font-semibold text-[#231C18] hover:bg-white/80 disabled:opacity-50 transition"
+                className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-5 py-2.5 text-sm font-semibold text-[#1C1612] hover:bg-[#B58A52] disabled:opacity-50 transition"
               >
                 Keep Order
               </button>

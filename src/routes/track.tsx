@@ -109,7 +109,7 @@ export default function TrackPage() {
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
             placeholder="e.g. TLB-8F4A2C"
-            className="w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-white/90 px-4 py-3 text-sm text-[#231C18] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+            className="w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
           />
           <button
             type="submit"

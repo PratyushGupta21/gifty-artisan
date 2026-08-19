@@ -90,7 +90,7 @@ export default function FAQPage() {
           </Link>
           <a
             href="mailto:support@thelittlebox.in"
-            className="rounded-full border border-[rgba(212,163,115,0.35)] bg-white px-7 py-3 text-sm font-semibold text-[#231C18] transition hover:bg-[#D4A373]/15 hover:scale-[1.02]"
+            className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-7 py-3 text-sm font-semibold text-[#1C1612] transition hover:bg-[#B58A52] hover:scale-[1.02]"
           >
             Contact Support
           </a>
