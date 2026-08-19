@@ -203,7 +203,7 @@ export default function LoginPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Aarohi Sharma"
-                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FDFBF7] px-4 py-3 text-sm text-[#181310] placeholder:text-[#6B5E55]/60 outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
                 />
               </div>
             )}
@@ -218,7 +218,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FDFBF7] px-4 py-3 text-sm text-[#181310] placeholder:text-[#6B5E55]/60 outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
@@ -233,7 +233,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FDFBF7] px-4 py-3 text-sm text-[#181310] placeholder:text-[#6B5E55]/60 outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 

@@ -215,16 +215,16 @@ export default function AdminPage() {
                   </span>
                 </div>
 
-                <p className="text-xs text-[#6B5E55]">
+                <p className="text-xs text-[#2C221E] font-medium">
                   Status:{" "}
-                  <span className="capitalize font-semibold text-[#231C18]">
+                  <span className="capitalize font-bold text-[#181310]">
                     {String(o["payment_status"])}
                   </span>{" "}
                   · Placed on {new Date(String(o["created_at"])).toLocaleString("en-IN")}
                 </p>
 
                 {Boolean(o["card_message"]) && (
-                  <p className="rounded-xl bg-[#FAF7F2] p-4 text-sm italic text-[#231C18]">
+                  <p className="rounded-xl bg-[#FDFBF7] border border-[rgba(24,19,16,0.15)] p-4 text-sm italic text-[#181310]">
                     “{String(o["card_message"])}”
                   </p>
                 )}

@@ -142,7 +142,7 @@ export default function MemoryPage() {
       {memory.order_id && (
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-5 py-3.5 text-sm">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-[#231C18]">Order Confirmation:</span>
+            <span className="font-semibold text-[#E0BC88]">Order Confirmation:</span>
             <span className="font-mono font-bold text-[#B85B3A]">
               #{shortOrderId(memory.order_id as string)}
             </span>
@@ -156,7 +156,7 @@ export default function MemoryPage() {
         </div>
       )}
 
-      <h1 className="text-3xl font-bold text-[#231C18]">
+      <h1 className="text-3xl font-bold text-[#FAF7F2]">
         A special memory box created for {memory.recipient_name}
         {memory.sender_name ? ` by ${memory.sender_name}` : ""}
       </h1>

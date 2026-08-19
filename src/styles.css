@@ -151,10 +151,10 @@
     width: 100%;
     border-radius: 0.75rem;
     border: 1px solid rgba(24, 19, 16, 0.25);
-    background-color: #FAF7F2;
+    background-color: #FDFBF7;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
-    color: #1C1612;
+    color: #181310;
     outline: none;
     transition: all 0.2s ease-in-out;
   }
