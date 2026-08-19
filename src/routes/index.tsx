@@ -129,7 +129,7 @@ export default function Home() {
         />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
+      <section id="how-it-works" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-10">
         <div className="grid gap-4 md:grid-cols-3">
           {PILLARS.map(({ icon: Icon, title, body }) => (
             <article
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tiers" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-12">
+      <section id="pricing" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-12">
         <h2 className="text-3xl">Three ways to say it</h2>
         <p className="mt-2 text-muted-foreground">
           Every tier is built around the answers you give us — nothing is off-the-shelf.

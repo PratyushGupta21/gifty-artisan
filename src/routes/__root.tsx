@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { BuilderProvider } from "@/lib/builder-store";
 import { BrandLogo } from "@/components/craft/BrandLogo";
+import { Footer } from "@/components/layout/Footer";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -122,36 +123,83 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link to="/" aria-label="The Little Box Home">
-          <BrandLogo />
-        </Link>
-        <div className="flex items-center gap-1 text-sm">
+    <header className="sticky top-0 z-40 border-b border-[#E8DFC8] bg-[#FBF8F3]/90 backdrop-blur">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
+        <div className="flex items-center gap-8">
+          <Link to="/" aria-label="The Little Box Home">
+            <BrandLogo />
+          </Link>
+
+          {/* Left/Center Navigation Links */}
+          <div className="hidden items-center gap-6 text-sm font-medium md:flex">
+            <Link
+              to="/"
+              hash="how-it-works"
+              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+            >
+              How it works
+            </Link>
+            <Link
+              to="/"
+              hash="pricing"
+              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+            >
+              Pricing
+            </Link>
+            <Link
+              to="/faq"
+              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+            >
+              FAQ
+            </Link>
+            <Link
+              to="/about"
+              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+            >
+              About
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Action Items */}
+        <div className="flex items-center gap-4 text-sm font-medium">
+          <Link
+            to="/admin"
+            className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+          >
+            Dashboard
+          </Link>
           <Link
             to="/track"
-            className="rounded-full px-3 py-2 text-muted-foreground hover:text-foreground"
-            activeProps={{ className: "rounded-full px-3 py-2 text-foreground" }}
+            className="hidden text-[#231C18]/80 transition-colors hover:text-[#B85B3A] sm:inline-block"
           >
             Track order
           </Link>
           <Link
             to="/build"
-            className="rounded-full bg-primary px-4 py-2 font-medium text-primary-foreground hover:bg-primary/90"
+            className="rounded-full bg-[#B85B3A] px-4 py-2 font-medium text-[#FBF8F3] transition-colors hover:bg-[#B85B3A]/90"
           >
             Build a box
           </Link>
         </div>
       </nav>
-    </header>
-  );
-}
 
-function SiteFooter() {
-  return (
-    <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">
-      Handcrafted in small batches with independent creators. © The Little Box
-    </footer>
+      {/* Mobile sub-navigation bar */}
+      <div className="flex items-center justify-around border-t border-[#E8DFC8]/60 bg-[#FBF8F3] py-2 text-xs font-medium md:hidden">
+        <Link to="/" hash="how-it-works" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+          How it works
+        </Link>
+        <Link to="/" hash="pricing" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+          Pricing
+        </Link>
+        <Link to="/faq" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+          FAQ
+        </Link>
+        <Link to="/about" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+          About
+        </Link>
+      </div>
+    </header>
   );
 }
 
@@ -166,10 +214,11 @@ function RootComponent() {
           <main className="flex-1">
             <Outlet />
           </main>
-          <SiteFooter />
+          <Footer />
         </div>
         <Toaster />
       </BuilderProvider>
     </QueryClientProvider>
   );
 }
+

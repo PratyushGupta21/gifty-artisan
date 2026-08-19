@@ -1,7 +1,9 @@
 interface BrandLogoProps {
   className?: string;
-  /** Hide the text on small screens. Defaults to true. */
+  /** Hide the text on small screens. Defaults to false. */
   hideTextOnMobile?: boolean;
+  /** Custom text color for brand text. Defaults to text-[#231C18] unless specified in className. */
+  textColor?: string;
 }
 
 /**
@@ -12,7 +14,9 @@ interface BrandLogoProps {
  * nested divs + Tailwind so it scales with a single size change on the
  * outer wrapper.
  */
-export function BrandLogo({ className = "", hideTextOnMobile = false }: BrandLogoProps) {
+export function BrandLogo({ className = "", hideTextOnMobile = false, textColor }: BrandLogoProps) {
+  const textClr = textColor || (className.includes("text-") ? "" : "text-[#231C18]");
+
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
       {/* ─── Icon Mark ─── */}
@@ -42,7 +46,7 @@ export function BrandLogo({ className = "", hideTextOnMobile = false }: BrandLog
 
       {/* ─── Brand Typography ─── */}
       <span
-        className={`font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight text-[#231C18] ${
+        className={`font-[family-name:var(--font-display)] text-lg font-semibold tracking-tight ${textClr} ${
           hideTextOnMobile ? "hidden sm:inline" : ""
         }`}
       >
@@ -51,3 +55,5 @@ export function BrandLogo({ className = "", hideTextOnMobile = false }: BrandLog
     </div>
   );
 }
+
+export default BrandLogo;
