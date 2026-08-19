@@ -45,10 +45,10 @@ export default function FAQPage() {
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3.5 py-1 text-xs font-semibold text-[#B85B3A]">
           <HelpCircle className="size-3.5" /> Studio Support & FAQs
         </span>
-        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
           Frequently Asked Questions
         </h1>
-        <p className="text-base text-[#6B5E55]">
+        <p className="text-base text-[#B8A99C]">
           Everything you need to know about building, customizing, and delivering your handcrafted box.
         </p>
       </div>
@@ -76,7 +76,7 @@ export default function FAQPage() {
       </div>
 
       {/* Bottom Assistance Box */}
-      <div className="paper-card paper-card-hover p-8 md:p-10 text-center space-y-4 bg-[#FAF7F2]">
+      <div className="paper-card paper-card-hover p-8 md:p-10 text-center space-y-4">
         <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">Still have questions?</h2>
         <p className="text-sm text-[#6B5E55] max-w-md mx-auto">
           We're here to help you craft the perfect gift memory. Get in touch or start building your box.

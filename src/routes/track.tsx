@@ -84,10 +84,10 @@ export default function TrackPage() {
         <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
           Studio Fulfilment Tracker
         </span>
-        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
           Track your box
         </h1>
-        <p className="text-sm text-[#6B5E55]">
+        <p className="text-sm text-[#B8A99C]">
           Paste the order ID (e.g. <span className="font-mono font-semibold text-[#B85B3A]">TLB-8F4A2C</span>) from your confirmation screen or dashboard.
         </p>
       </div>
@@ -109,7 +109,7 @@ export default function TrackPage() {
             value={orderId}
             onChange={(e) => setOrderId(e.target.value)}
             placeholder="e.g. TLB-8F4A2C"
-            className="w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+            className="w-full rounded-xl border border-[rgba(24,19,16,0.25)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/25 focus:shadow-[0_0_15px_rgba(184,91,58,0.15)]"
           />
           <button
             type="submit"

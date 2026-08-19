@@ -65,32 +65,32 @@
 :root,
 .dark {
   --radius: 1rem;
-  /* Canvas: Soft Artisan Cream #FAF7F2 */
-  --background: #FAF7F2;
-  /* Ink: Warm Espresso #231C18 */
-  --foreground: #231C18;
-  /* Translucent frosted glass card */
+  /* Canvas: Deep Warm Espresso Charcoal */
+  --background: #181310;
+  /* Ink: Soft Cream for dark canvas */
+  --foreground: #FAF7F2;
+  /* Camel card with espresso border */
   --card: rgba(207, 167, 113, 0.95);
-  --card-foreground: #231C18;
-  --popover: #FAF7F2;
-  --popover-foreground: #231C18;
+  --card-foreground: #1C1612;
+  --popover: #1C1612;
+  --popover-foreground: #FAF7F2;
   /* Warm Terracotta #B85B3A */
   --primary: #B85B3A;
   --primary-foreground: #FAF7F2;
   /* Sage #708238 */
   --secondary: #708238;
   --secondary-foreground: #FAF7F2;
-  --muted: #F2EAE1;
-  /* Muted slate brown #6B5E55 */
-  --muted-foreground: #6B5E55;
+  --muted: #2A2220;
+  /* Muted warm tan for dark canvas */
+  --muted-foreground: #B8A99C;
   /* Muted Gold #D4A373 */
   --accent: #D4A373;
   --accent-foreground: #1C1612;
   --destructive: #B91C1C;
   --destructive-foreground: #FAF7F2;
-  /* Delicate Gold-Sand rgba(212, 163, 115, 0.25) */
-  --border: rgba(212, 163, 115, 0.25);
-  --input: rgba(212, 163, 115, 0.35);
+  /* Subtle gold border on dark */
+  --border: rgba(212, 163, 115, 0.2);
+  --input: rgba(212, 163, 115, 0.3);
   --ring: #D4A373;
 }
 
@@ -100,11 +100,11 @@
   }
 
   body {
-    background-color: #FAF7F2;
+    background-color: #181310;
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    /* Soft warm brown dot grid overlay (~0.12 opacity look) */
-    background-image: radial-gradient(rgba(35, 28, 24, 0.06) 1.2px, transparent 1.2px);
+    /* Subtle warm gold dot grid overlay on dark canvas */
+    background-image: radial-gradient(rgba(212, 163, 115, 0.06) 1.2px, transparent 1.2px);
     background-size: 24px 24px;
     min-height: 100vh;
   }
@@ -125,9 +125,9 @@
     background-color: rgba(207, 167, 113, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 163, 115, 0.25);
+    border: 1px solid rgba(24, 19, 16, 0.3);
     border-radius: var(--radius-2xl);
-    box-shadow: 0 4px 20px -2px rgba(28, 22, 18, 0.05);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.15);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -135,8 +135,8 @@
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
   }
   .paper-card-hover:hover {
-    box-shadow: 0 16px 32px -4px rgba(28, 22, 18, 0.12);
-    border-color: rgba(212, 163, 115, 0.5);
+    box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.25);
+    border-color: rgba(181, 138, 82, 0.6);
     transform: scale(1.02);
   }
 
@@ -150,17 +150,17 @@
   .input-luxury {
     width: 100%;
     border-radius: 0.75rem;
-    border: 1px solid rgba(212, 163, 115, 0.3);
-    background-color: rgba(207, 167, 113, 0.92);
+    border: 1px solid rgba(24, 19, 16, 0.25);
+    background-color: #FAF7F2;
     padding: 0.75rem 1rem;
     font-size: 0.875rem;
-    color: #231C18;
+    color: #1C1612;
     outline: none;
     transition: all 0.2s ease-in-out;
   }
   .input-luxury:focus {
     border-color: #B85B3A;
-    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25), 0 0 15px rgba(212, 163, 115, 0.2);
+    box-shadow: 0 0 0 3px rgba(184, 91, 58, 0.2), 0 0 15px rgba(212, 163, 115, 0.15);
   }
 
   .dark-input-luxury {

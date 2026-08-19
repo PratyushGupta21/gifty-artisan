@@ -128,10 +128,10 @@ export default function AdminPage() {
           <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
             Studio Orders Dashboard
           </span>
-          <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+          <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
             Your Orders & Memories
           </h1>
-          <p className="text-sm text-[#6B5E55]">
+          <p className="text-sm text-[#B8A99C]">
             Track your handcrafted gift box orders, letters, and digital memory links.
           </p>
         </div>
@@ -280,8 +280,8 @@ export default function AdminPage() {
 
       {/* Cancel Order Confirmation Modal with subtle Backdrop Blur */}
       {orderToCancel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C1612]/75 p-4 backdrop-blur-lg">
-          <div className="paper-card w-full max-w-md p-7 space-y-5 bg-[#FAF7F2] shadow-2xl border border-[rgba(212,163,115,0.35)]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#181310]/80 p-4 backdrop-blur-lg">
+          <div className="paper-card w-full max-w-md p-7 space-y-5 shadow-2xl border border-[rgba(24,19,16,0.3)]">
             <h3 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">
               Cancel Order
             </h3>

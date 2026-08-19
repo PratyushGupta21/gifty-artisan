@@ -173,17 +173,17 @@ export default function LoginPage() {
       </div>
 
       {/* ─── RIGHT FORM PANEL ─── */}
-      <div className="flex w-full items-center justify-center bg-[#FAF7F2] p-6 lg:w-1/2 lg:p-12">
+      <div className="flex w-full items-center justify-center bg-[#181310] p-6 lg:w-1/2 lg:p-12">
         <div className="w-full max-w-md space-y-6">
           {/* Header */}
           <div className="space-y-2 text-left">
             <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-bold">
               Account Access
             </span>
-            <h2 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18]">
+            <h2 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2]">
               {isSignUp ? "Create your account" : "Welcome back"}
             </h2>
-            <p className="text-sm text-[#6B5E55]">
+            <p className="text-sm text-[#B8A99C]">
               {isSignUp
                 ? "Enter your details to save your gift boxes & track orders."
                 : "Sign in to continue building your handcrafted gift box."}
@@ -194,7 +194,7 @@ export default function LoginPage() {
           <form onSubmit={handleEmailAuth} className="space-y-4">
             {isSignUp && (
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-[#FAF7F2]">
                   Full Name
                 </label>
                 <input
@@ -203,13 +203,13 @@ export default function LoginPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Aarohi Sharma"
-                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                  className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
                 />
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#FAF7F2]">
                 Email Address
               </label>
               <input
@@ -218,12 +218,12 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-[#231C18]">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#FAF7F2]">
                 Password
               </label>
               <input
@@ -233,7 +233,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
+                className="mt-1.5 w-full rounded-xl border border-[rgba(212,163,115,0.35)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]"
               />
             </div>
 
@@ -250,7 +250,7 @@ export default function LoginPage() {
           {/* Divider */}
           <div className="relative flex items-center justify-center py-2">
             <div className="w-full border-t border-[rgba(212,163,115,0.3)]" />
-            <span className="absolute bg-[#FAF7F2] px-3 text-xs uppercase tracking-wider text-[#6B5E55] font-semibold">
+            <span className="absolute bg-[#181310] px-3 text-xs uppercase tracking-wider text-[#B8A99C] font-semibold">
               OR
             </span>
           </div>
@@ -287,7 +287,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setIsSignUp((prev) => !prev)}
-              className="text-sm font-semibold text-[#231C18] hover:text-[#B85B3A] transition-colors"
+              className="text-sm font-semibold text-[#D4A373] hover:text-[#B85B3A] transition-colors"
             >
               {isSignUp
                 ? "Already have an account? Sign in"

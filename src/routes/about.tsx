@@ -23,10 +23,10 @@ export default function AboutPage() {
         <span className="inline-flex items-center gap-1.5 rounded-full border border-[#B85B3A]/30 bg-[#B85B3A]/10 px-3.5 py-1 text-xs font-semibold text-[#B85B3A]">
           <Heart className="size-3.5" /> Person-First Craftsmanship
         </span>
-        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#231C18] md:text-4xl">
+        <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
           The Story Behind The Little Box
         </h1>
-        <p className="text-base text-[#6B5E55] md:text-lg">
+        <p className="text-base text-[#B8A99C] md:text-lg">
           Moving past generic off-the-shelf gifts to craft physical-meets-digital keepsakes that tell real stories.
         </p>
       </div>
@@ -59,7 +59,7 @@ export default function AboutPage() {
 
       {/* How We Work Cards */}
       <div className="space-y-4">
-        <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">How We Work</h2>
+        <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#FAF7F2]">How We Work</h2>
         
         <div className="grid gap-6 md:grid-cols-3">
           <div className="paper-card paper-card-hover p-6 space-y-3">

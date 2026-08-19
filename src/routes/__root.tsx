@@ -154,7 +154,7 @@ function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[rgba(212,163,115,0.25)] bg-[#FAF7F2]/85 backdrop-blur-lg">
+    <header className="sticky top-0 z-40 border-b border-[rgba(212,163,115,0.15)] bg-[#181310]/90 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
         <div className="flex items-center gap-8">
           <Link to="/" aria-label="The Little Box Home">
@@ -166,26 +166,26 @@ function SiteHeader() {
             <Link
               to="/"
               hash="how-it-works"
-              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+              className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]"
             >
               How it works
             </Link>
             <Link
               to="/"
               hash="pricing"
-              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+              className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]"
             >
               Pricing
             </Link>
             <Link
               to="/faq"
-              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+              className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]"
             >
               FAQ
             </Link>
             <Link
               to="/about"
-              className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+              className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]"
             >
               About
             </Link>
@@ -196,20 +196,20 @@ function SiteHeader() {
         <div className="flex items-center gap-3.5 text-sm font-medium">
           <Link
             to="/admin"
-            className="text-[#231C18] transition-colors hover:text-[#B85B3A]"
+            className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]"
           >
             Dashboard
           </Link>
           <Link
             to="/track"
-            className="hidden text-[#231C18]/80 transition-colors hover:text-[#B85B3A] sm:inline-block"
+            className="text-[#FAF7F2]/80 transition-colors hover:text-[#D4A373]"
           >
             Track order
           </Link>
 
           {user ? (
             <div className="flex items-center gap-2 pl-1 border-l border-[rgba(212,163,115,0.25)]">
-              <span className="hidden text-xs text-[#231C18]/80 lg:inline-block max-w-[140px] truncate font-normal" title={user.email}>
+              <span className="hidden text-xs text-[#FAF7F2]/70 lg:inline-block max-w-[140px] truncate font-normal" title={user.email}>
                 {user.email}
               </span>
               <button
@@ -223,7 +223,7 @@ function SiteHeader() {
           ) : (
             <Link
               to="/login"
-              className="rounded-full border border-[#B85B3A] px-3.5 py-1.5 text-xs font-semibold text-[#B85B3A] transition hover:bg-[#B85B3A]/10"
+              className="rounded-full border border-[#B85B3A] px-3.5 py-1.5 text-xs font-semibold text-[#D4A373] transition hover:bg-[#B85B3A]/10"
             >
               Sign In
             </Link>
@@ -239,17 +239,17 @@ function SiteHeader() {
       </nav>
 
       {/* Mobile sub-navigation bar */}
-      <div className="flex items-center justify-around border-t border-[rgba(212,163,115,0.2)] bg-[#FAF7F2]/90 backdrop-blur-lg py-2 text-xs font-medium md:hidden">
-        <Link to="/" hash="how-it-works" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+      <div className="flex items-center justify-around border-t border-[rgba(212,163,115,0.12)] bg-[#181310]/90 backdrop-blur-lg py-2 text-xs font-medium md:hidden">
+        <Link to="/" hash="how-it-works" className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]">
           How it works
         </Link>
-        <Link to="/" hash="pricing" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+        <Link to="/" hash="pricing" className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]">
           Pricing
         </Link>
-        <Link to="/faq" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+        <Link to="/faq" className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]">
           FAQ
         </Link>
-        <Link to="/about" className="text-[#231C18] transition-colors hover:text-[#B85B3A]">
+        <Link to="/about" className="text-[#FAF7F2] transition-colors hover:text-[#D4A373]">
           About
         </Link>
       </div>
@@ -263,7 +263,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <BuilderProvider>
-        <div className="relative flex min-h-screen flex-col bg-[#FAF7F2] text-[#231C18] selection:bg-[#D4A373]/30 overflow-x-hidden">
+        <div className="relative flex min-h-screen flex-col bg-[#181310] text-[#FAF7F2] selection:bg-[#D4A373]/30 overflow-x-hidden">
           {/* ── Fixed Ambient Glow Radial Gradients ── */}
           <div
             className="fixed -top-32 -right-32 size-[450px] rounded-full pointer-events-none z-0"

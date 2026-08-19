@@ -196,8 +196,8 @@ export default function Home() {
           <span className="text-xs uppercase tracking-wider text-[#B85B3A] font-semibold">
             Tailored Experiences
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#231C18]">Three ways to say it</h2>
-          <p className="text-sm text-[#6B5E55]">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#FAF7F2]">Three ways to say it</h2>
+          <p className="text-sm text-[#B8A99C]">
             Every tier is built around the answers you give us — nothing is off-the-shelf.
           </p>
         </div>
@@ -235,7 +235,7 @@ export default function Home() {
 
       {/* ─── REVIEWS CAROUSEL / GRID SECTION ─── */}
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <h2 className="text-3xl font-bold text-[#231C18]">Unboxed by real people</h2>
+        <h2 className="text-3xl font-bold text-[#FAF7F2]">Unboxed by real people</h2>
         <div className="mt-6 flex snap-x gap-5 overflow-x-auto pb-4">
           {REVIEWS.map((r) => (
             <blockquote

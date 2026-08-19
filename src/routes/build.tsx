@@ -47,7 +47,7 @@ export const Route = createFileRoute("/build")({
 const STEPS = ["Recipient", "Memories", "Choose tier", "Review & order"];
 
 const inputClass =
-  "w-full rounded-xl border border-[rgba(212,163,115,0.3)] bg-[rgba(207,167,113,0.92)] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#D4A373]/30 focus:shadow-[0_0_15px_rgba(212,163,115,0.25)]";
+  "w-full rounded-xl border border-[rgba(24,19,16,0.25)] bg-[#FAF7F2] px-4 py-3 text-sm text-[#1C1612] outline-none transition duration-200 focus:border-[#B85B3A] focus:ring-2 focus:ring-[#B85B3A]/25 focus:shadow-[0_0_15px_rgba(184,91,58,0.15)]";
 
 function BuildPage() {
   const search = Route.useSearch();
