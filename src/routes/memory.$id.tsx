@@ -9,7 +9,7 @@ import { shortOrderId } from "@/lib/utils";
 export const Route = createFileRoute("/memory/$id")({
   head: () => ({
     meta: [
-      { title: "A memory box was made for you — The Little Box" },
+      { title: "A memory box was made for you — The Gift Architects" },
       {
         name: "description",
         content: "A private digital memory page with photos, a letter and a song, made by hand.",

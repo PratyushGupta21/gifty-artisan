@@ -5,7 +5,7 @@ const anonKey = import.meta.env['VITE_SUPABASE_ANON_KEY'] as string | undefined;
 
 if (!url || !anonKey) {
   console.warn(
-    "[The Little Box] Missing Supabase environment variables.\n" +
+    "[The Gift Architects] Missing Supabase environment variables.\n" +
       "Copy .env.example → .env and fill in your project credentials.\n" +
       "  VITE_SUPABASE_URL      — your Supabase project URL\n" +
       "  VITE_SUPABASE_ANON_KEY — your Supabase anon/public key",

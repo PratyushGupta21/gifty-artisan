@@ -1,4 +1,4 @@
--- The Little Box — initial schema (run in your Supabase SQL editor)
+-- The Gift Architects — initial schema (run in your Supabase SQL editor)
 create extension if not exists "pgcrypto";
 
 create table if not exists public.orders (

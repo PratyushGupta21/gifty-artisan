@@ -15,7 +15,7 @@ export const Route = createFileRoute("/login")({
   validateSearch: loginSearchSchema,
   head: () => ({
     meta: [
-      { title: "Sign In or Register — The Little Box" },
+      { title: "Sign In or Register — The Gift Architects" },
       {
         name: "description",
         content: "Sign in or create an account to start building personalized handcrafted gift boxes.",
@@ -168,7 +168,7 @@ export default function LoginPage() {
 
         {/* Footer info */}
         <div className="relative z-10 text-xs text-[#FAF7F2]/50">
-          © {new Date().getFullYear()} The Little Box. All rights reserved.
+          © {new Date().getFullYear()} The Gift Architects. All rights reserved.
         </div>
       </div>
 
@@ -291,7 +291,7 @@ export default function LoginPage() {
             >
               {isSignUp
                 ? "Already have an account? Sign in"
-                : "New to The Little Box? Create an account"}
+                : "New to The Gift Architects? Create an account"}
             </button>
           </div>
         </div>

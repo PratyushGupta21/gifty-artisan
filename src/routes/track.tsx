@@ -7,13 +7,13 @@ import { inr } from "@/lib/gift";
 export const Route = createFileRoute("/track")({
   head: () => ({
     meta: [
-      { title: "Track your gift box — The Little Box" },
+      { title: "Track your gift box — The Gift Architects" },
       {
         name: "description",
         content:
           "Follow your handcrafted box from received to delivered, with WhatsApp updates at every stage.",
       },
-      { property: "og:title", content: "Track your gift box — The Little Box" },
+      { property: "og:title", content: "Track your gift box — The Gift Architects" },
       {
         property: "og:description",
         content: "See exactly where your handcrafted box is in our studio.",

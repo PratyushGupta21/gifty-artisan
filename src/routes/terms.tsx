@@ -4,7 +4,7 @@ import { FileText, Hammer, ShieldAlert, RotateCcw } from "lucide-react";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service — The Little Box" },
+      { title: "Terms of Service — The Gift Architects" },
       {
         name: "description",
         content: "Clear, human guidelines on handcrafting timelines, customization, and delivery.",

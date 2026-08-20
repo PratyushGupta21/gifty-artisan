@@ -1,5 +1,5 @@
-🎁 The Little Box — Person-First Gifting Platform
-A full-stack, personalized gifting application engineered with a luxury craft design system. Built with modern web technologies, The Little Box delivers a seamless, high-contrast, tactile e-commerce experience—combining bespoke custom builder workflows, dynamic memory pages, and real-time order tracking.
+🎁 The Gift Architects — Person-First Gifting Platform
+A full-stack, personalized gifting application engineered with a luxury craft design system. Built with modern web technologies, The Gift Architects delivers a seamless, high-contrast, tactile e-commerce experience—combining bespoke custom builder workflows, dynamic memory pages, and real-time order tracking.
 
 🌟 Key Features
 Multi-Step Gift Builder: An interactive flow letting users personalize gift cards, choose personality tags, attach custom Spotify tracks, and write handwritten card messages.

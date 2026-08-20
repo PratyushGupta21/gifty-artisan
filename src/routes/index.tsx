@@ -8,13 +8,13 @@ import { TIERS, inr } from "@/lib/gift";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Little Box — Person-first handmade gift boxes" },
+      { title: "The Gift Architects | Person-First Custom Gifting" },
       {
         name: "description",
         content:
           "You tell us who they are. We create what to give them. Handcrafted, personalised gift boxes with photo cards, artisan keepsakes and QR memory pages from ₹250.",
       },
-      { property: "og:title", content: "The Little Box — Person-first handmade gift boxes" },
+      { property: "og:title", content: "The Gift Architects | Person-First Custom Gifting" },
       {
         property: "og:description",
         content:
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: "The Little Box gift packages",
+          name: "The Gift Architects gift packages",
           itemListElement: TIERS.map((t, i) => ({
             "@type": "ListItem",
             position: i + 1,

@@ -43,7 +43,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-[#FBF8F3]/60">
-          © {new Date().getFullYear()} The Little Box. All rights reserved.
+          © {new Date().getFullYear()} The Gift Architects. All rights reserved.
         </div>
       </div>
     </footer>

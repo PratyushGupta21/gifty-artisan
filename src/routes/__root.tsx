@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "The Little Box — Personalised handmade gift boxes" },
+      { title: "The Gift Architects | Person-First Custom Gifting" },
       {
         name: "description",
         content:
@@ -157,7 +157,7 @@ function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-[rgba(212,163,115,0.15)] bg-[#181310]/90 backdrop-blur-lg">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-8">
         <div className="flex items-center gap-8">
-          <Link to="/" aria-label="The Little Box Home">
+          <Link to="/" aria-label="The Gift Architects Home">
             <BrandLogo />
           </Link>
 

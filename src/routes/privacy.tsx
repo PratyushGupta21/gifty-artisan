@@ -4,7 +4,7 @@ import { ShieldCheck, Lock, Clock, CreditCard } from "lucide-react";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy & Media Safety Policy — The Little Box" },
+      { title: "Privacy & Media Safety Policy — The Gift Architects" },
       {
         name: "description",
         content: "How we handle your personal details, uploaded photos, and private memory links with care.",
@@ -68,8 +68,8 @@ export default function PrivacyPage() {
               <span className="mt-1.5 size-2 shrink-0 rounded-full bg-[#B85B3A]" />
               <span>
                 <strong className="text-[#231C18]">Digital Memory Pages:</strong> Your digital QR memory link stays active permanently unless you request its deletion by emailing{" "}
-                <a href="mailto:privacy@thelittlebox.in" className="font-semibold text-[#B85B3A] underline underline-offset-2 hover:text-[#B85B3A]/80">
-                  privacy@thelittlebox.in
+                <a href="mailto:privacy@thegiftarchitects.com" className="font-semibold text-[#B85B3A] underline underline-offset-2 hover:text-[#B85B3A]/80">
+                  privacy@thegiftarchitects.com
                 </a>.
               </span>
             </li>

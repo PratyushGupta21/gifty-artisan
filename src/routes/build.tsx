@@ -28,13 +28,13 @@ export const Route = createFileRoute("/build")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Build their gift box — The Little Box" },
+      { title: "Build their gift box — The Gift Architects" },
       {
         name: "description",
         content:
           "A four-step builder: tell us about them, add photos and memories, pick a tier, and we handcraft the rest.",
       },
-      { property: "og:title", content: "Build their gift box — The Little Box" },
+      { property: "og:title", content: "Build their gift box — The Gift Architects" },
       {
         property: "og:description",
         content: "Answer a few questions about them and we'll handcraft a gift box around it.",

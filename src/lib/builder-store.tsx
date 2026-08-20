@@ -31,7 +31,7 @@ const EMPTY: BuilderState = {
   pincode: "",
 };
 
-const STORAGE_KEY = "little-box-builder";
+const STORAGE_KEY = "gift-architects-builder";
 
 /** Read localStorage synchronously so the first render already has the saved draft. */
 function loadDraft(): BuilderState {

@@ -5,7 +5,7 @@ import creatorImg from "@/assets/creator.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us — The Story Behind The Little Box" },
+      { title: "About Us — The Story Behind The Gift Architects" },
       {
         name: "description",
         content: "Moving past generic off-the-shelf gifts to craft physical-meets-digital keepsakes that tell real stories.",
@@ -24,7 +24,7 @@ export default function AboutPage() {
           <Heart className="size-3.5" /> Person-First Craftsmanship
         </span>
         <h1 className="font-[family-name:var(--font-serif)] text-3xl font-extrabold text-[#FAF7F2] md:text-4xl">
-          The Story Behind The Little Box
+          The Story Behind The Gift Architects
         </h1>
         <p className="text-base text-[#B8A99C] md:text-lg">
           Moving past generic off-the-shelf gifts to craft physical-meets-digital keepsakes that tell real stories.
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <section className="paper-card paper-card-hover p-6 md:p-8 space-y-4">
         <h2 className="font-[family-name:var(--font-serif)] text-2xl font-bold text-[#231C18]">Why We Started</h2>
         <p className="text-sm leading-relaxed text-[#6B5E55] md:text-base">
-          Gift-giving should feel like a warm embrace, not a last-minute chore. Most store-bought gift hampers feel impersonal—filled with mass-produced clutter that gets forgotten in a drawer. We built The Little Box to combine physical artisan craftsmanship with digital storytelling, creating personal gift boxes centered around your recipient's personality.
+          Gift-giving should feel like a warm embrace, not a last-minute chore. Most store-bought gift hampers feel impersonal—filled with mass-produced clutter that gets forgotten in a drawer. We built The Gift Architects to combine physical artisan craftsmanship with digital storytelling, creating personal gift boxes centered around your recipient's personality.
         </p>
       </section>
 

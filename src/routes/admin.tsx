@@ -10,13 +10,13 @@ import { shortOrderId } from "@/lib/utils";
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Your Orders — The Little Box" },
+      { title: "Your Orders — The Gift Architects" },
       {
         name: "description",
         content: "View your order history, track status, and access digital memory pages.",
       },
       { name: "robots", content: "noindex" },
-      { property: "og:title", content: "Your Orders — The Little Box" },
+      { property: "og:title", content: "Your Orders — The Gift Architects" },
     ],
   }),
   component: AdminPage,
@@ -253,7 +253,7 @@ export default function AdminPage() {
                     {slug && (
                       <a
                         href={`https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encodeURIComponent(
-                          `https://thelittlebox.gift/memory/${slug}`,
+                          `https://thegiftarchitects.gift/memory/${slug}`,
                         )}`}
                         target="_blank"
                         rel="noreferrer"

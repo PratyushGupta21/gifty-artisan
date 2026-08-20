@@ -4,7 +4,7 @@ import { HelpCircle, QrCode, Calendar, Clock, Truck } from "lucide-react";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "Frequently Asked Questions — The Little Box" },
+      { title: "Frequently Asked Questions — The Gift Architects" },
       {
         name: "description",
         content: "Everything you need to know about building, customizing, and delivering your handcrafted box.",
@@ -89,7 +89,7 @@ export default function FAQPage() {
             Start Building a Box
           </Link>
           <a
-            href="mailto:support@thelittlebox.in"
+            href="mailto:support@thegiftarchitects.com"
             className="rounded-full border border-[rgba(212,163,115,0.35)] bg-[#CFA771] px-7 py-3 text-sm font-semibold text-[#1C1612] transition hover:bg-[#B58A52] hover:scale-[1.02]"
           >
             Contact Support

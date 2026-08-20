@@ -54,7 +54,7 @@ export function BrandLogo({ className = "", hideTextOnMobile = false, textColor 
           hideTextOnMobile ? "hidden sm:inline" : ""
         }`}
       >
-        The Little Box
+        The Gift Architects
       </span>
     </div>
   );
